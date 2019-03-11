@@ -1,0 +1,38 @@
+@import '../../../style/_var.sass'
+
+// ##########################################################
+// ##########################################################
+// ##########################################################
+
+.list-view
+  width: 100%
+  h4
+    font-weight: 500
+    color: $white
+    font-size: $cube*3
+    margin: 0 0 $cube*2 0
+    padding: 0
+    font-weight: regular
+    transition: all 250ms
+    cursor: pointer
+    span
+      font-size: $cube*1.5
+  .list-open
+    position: absolute
+    bottom: 0
+    left: 0
+    padding: $cube*2
+  .list-closed
+    position: absolute
+    bottom: 0
+    right: 0
+    padding: $cube*2
+
+h4:hover
+  color: $green
+
+.todo-elements
+  width: 25vw
+  margin: 0
+  display: flex
+  flex-flow: column

@@ -1,0 +1,24 @@
+<div class="register">
+  <form [formGroup]="signupForm"  (ngSubmit)="register()">
+      <div class="form-group">
+          <label for="email">E-Mail</label>
+          <input type="text" formControlName="email" />
+          <div class="alert" *ngIf="email.invalid && email.dirty">
+            E-Mail ungültig
+          </div>
+      </div>
+      <div class="form-group">
+          <label for="name">Benutzername</label>
+          <input type="text" formControlName="name" required/>
+      </div>
+      <div class="form-group">
+          <label for="password">Passwort</label>
+          <input type="password" formControlName="password" required />
+          <div class="alert" *ngIf="password.invalid && password.touched" >
+              Passwort ungültig
+          </div>
+      </div>
+      <button type="button" (click)="register()" [disabled]="!signupForm.valid" routerLink="/login" routerLinkActive="active" class="btn btn-green">Registrieren</button>
+      <a routerLink="/login" class="btn btn-ghost">Abbrechen</a>
+  </form>
+</div>

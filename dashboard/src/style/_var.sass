@@ -1,0 +1,43 @@
+// Color Palette
+$background: #282F3A
+$red: #BC3D44
+$green: #5FBA7D
+$white: #ffffff
+
+// Padding & maring, Sizing
+$cube: 1rem
+
+// Fonts
+$font: "Montserrat", sans-serif
+
+// Reset
+*
+  margin: 0
+  padding: 0
+  text-decoration: none
+  font-family: $font
+
+// Button
+.btn
+    display: inline-block
+    font-weight: 400
+    text-align: center
+    white-space: nowrap
+    vertical-align: middle
+    user-select: none
+    border: 1px solid transparent
+    padding: .5rem 1rem
+    font-size: $cube*1.8
+    line-height: 1.5
+    border-radius: .25rem
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
+    cursor: pointer
+    margin-top: $cube
+
+.btn-green
+    background-color: $green
+    color: white
+
+.btn-ghost
+    color: $green
+    text-decoration: none

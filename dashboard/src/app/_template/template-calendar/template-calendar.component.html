@@ -1,0 +1,26 @@
+<div class="calendar">
+  <p>{{ jahr }}</p>
+  <h1>{{ monat }}</h1>
+  <table>
+      <thead>
+        <tr>
+          <th>Mo</th>
+          <th>Di</th>
+          <th>Mi</th>
+          <th>Do</th>
+          <th>Fr</th>
+          <th>Sa</th>
+          <th>So</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let woche of wochen">
+        <td *ngFor="let wochenTag of woche"
+            class="today"
+            [class.today]="wochenTag===tag">
+          <span>{{ wochenTag }}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

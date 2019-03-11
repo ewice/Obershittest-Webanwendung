@@ -1,0 +1,72 @@
+@import '../../../style/_var.sass'
+
+// ##########################################################
+// ##########################################################
+// ##########################################################
+
+.todo
+    width: 100%
+    margin: 0 0 $cube 0
+    display: flex
+    flex-flow: row
+    justify-content: space-between
+    align-items: stretch
+    height: $cube*6
+    .todo-content
+        width: 100%
+        display: flex
+        flex-flow: row
+        justify-content: flex-start
+        align-items: center
+        .handle
+            background-color: $green
+            height: 100%
+            width: $cube*1.5
+            display: flex
+            flex-flow: row
+            justify-content: center
+            align-items: center
+            cursor: grab
+        .todo-content-check
+            display: flex
+            margin: $cube*2
+            flex-flow: row
+            justify-content: center
+            align-items: center
+            cursor: pointer
+            img
+                width: $cube*3.5
+                height: $cube*3.5
+        .todo-content-titel
+            width: 100%
+            input
+                font-size: $cube*1.5
+                padding: $cube*2
+                color: white
+                width: 100%
+                border: none
+                word-break: break-word
+                background: none
+            input::placeholder
+                opacity: 0.5
+                font-style: italic
+            input:focus
+                outline: none
+    .delete
+        padding: $cube
+        cursor: pointer
+        img
+            width: $cube*2.5
+            height: $cube*4
+            display: flex
+            flex-flow: row
+            justify-content: center
+            align-items: center
+.todo.done
+    .todo-content
+        .handle
+            display: none
+        .todo-content-titel
+            input
+                opacity: 0.3
+                text-decoration: line-through

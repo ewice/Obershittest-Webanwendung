@@ -1,0 +1,15 @@
+<div class="todo" [class.done]="toDo$.status">
+  <div class="todo-content">
+      <div class="handle"></div>
+      <div class="todo-content-check">
+          <img *ngIf="!toDo$.status" (click)="changeCheck($event)" src="../../../assets/svg/checkbox-empty.svg">
+          <img *ngIf="toDo$.status" (click)="changeCheck($event)" src="../../../assets/svg/checkbox-done.svg">
+      </div>
+      <div class="todo-content-titel">
+          <input (blur)="changeLabel($event)" type="text" [(ngModel)]="toDo$.label" placeholder="Name des ToDo-Punktes">
+      </div>
+  </div>
+  <div class="delete" (click)="deleteToDo($event)">
+    <img src="../../../assets/svg/garbage.svg">
+  </div>
+</div>
