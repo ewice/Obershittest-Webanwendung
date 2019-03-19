@@ -1,4 +1,5 @@
-﻿<div id="dashboard">
+﻿<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div id="dashboard">
   <nav>
     <div class="hamburg" (click)="transformMenu()" [ngClass]="status ? 'clicked' : 'unclicked'">
         <span class="linie"></span>
@@ -13,26 +14,18 @@
       <gridster-item [item]="item" *ngFor="let item of dashboard">
         <div class="button-holder">
           <div class="gridster-item-content" *ngIf="item.hasContent">
-            <div class="stuff">
-              <span>Some content to select and click without dragging the widget</span>
-              <a href="https://www.google.com" target="_blank">Link to Google</a>
-            </div>
+            <app-weather *ngIf="item.type == 'weather'"></app-weather>
           </div>
-          <div class="item-buttons" *ngIf="item.hasContent">
-            <button mat-icon-button mat-raised-button class="drag-handler">
-              open
-            </button>
             <button mat-icon-button mat-raised-button class="remove-button" (mousedown)="removeItem($event, item)"
                     (touchstart)="removeItem($event, item)">
-              delete
+              <i class="fa fa-close"></i>
             </button>
           </div>
           <label *ngIf="!item.hasContent">{{item.label}}</label>
           <button mat-mini-fab *ngIf="!item.hasContent" (mousedown)="removeItem($event, item)"
                   (touchstart)="removeItem($event, item)">
-            delete
+           <i class="fa fa-close"></i>
           </button>
-        </div>
       </gridster-item>
     </gridster>
     <!-- <app-template-clock></app-template-clock>

@@ -72,14 +72,22 @@
 
   gridster
     width: 96%
+    background: $background
+    gridster-item
+      box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.20)
+      transition: all 0.3s cubic-bezier(.25,.8,.25,1)
+      padding: 5px !important
+      background-color: $blue
+      &:hover
+        box-shadow: 0 3px 14px rgba(0,0,0,0.3), 0 3px 8px rgba(0,0,0,0.3)
 
 #logout
-  background: $green
-  text-align: right
-  padding: $cube $cube*3
-  a
-    color: white
-    font-weight: 500
+    background: $green
+    text-align: right
+    padding: $cube $cube*3
+    a
+      color: white
+      font-weight: 500
 
 // app-template-calendar
 //   position: absolute
