@@ -16,6 +16,9 @@
                       (touchstart)="removeItem($event, item)">
                 delete
               </button>
+            <div>
+              <app-spotify-component></app-spotify-component>
+            </div>
             </div>
             <label *ngIf="!item.hasContent">{{item.label}}</label>
             <button mat-mini-fab *ngIf="!item.hasContent" (mousedown)="removeItem($event, item)"

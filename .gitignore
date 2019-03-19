@@ -3731,3 +3731,4 @@ dashboard/node_modules/@angular-devkit/build-angular/node_modules/ajv/package.js
 dashboard/node_modules/@angular-devkit/build-angular/node_modules/@angular-devkit/core/package.json
 dashboard/node_modules/@angular-devkit/build-angular/node_modules/@angular-devkit/architect/package.json
 dashboard/node_modules/@angular-devkit/architect/package.json
+.angulardoc.json
