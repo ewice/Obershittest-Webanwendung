@@ -8,6 +8,7 @@ import {CompactType, DisplayGrid, GridsterConfig, GridsterItem, GridType} from '
   styleUrls: ['./home.component.sass'],
 })
 export class HomeComponent implements OnInit {
+  status: Boolean = false;
   options: GridsterConfig;
   dashboard: Array<GridsterItem>;
   static itemChange(item, itemComponent) {
@@ -107,5 +108,9 @@ export class HomeComponent implements OnInit {
 
   addItem() {
     this.dashboard.push({x: 0, y: 0, cols: 1, rows: 1});
+  }
+
+  transformMenu() {
+    this.status = !this.status;
   }
 }

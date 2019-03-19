@@ -1,30 +1,40 @@
 ﻿<div id="dashboard">
-    <gridster [options]="options">
-        <gridster-item [item]="item" *ngFor="let item of dashboard">
-          <div class="button-holder">
-            <div class="gridster-item-content" *ngIf="item.hasContent">
-              <div class="stuff">
-                <span>Some content to select and click without dragging the widget</span>
-                <a href="https://www.google.com" target="_blank">Link to Google</a>
-              </div>
+  <nav>
+    <div class="hamburg" (click)="transformMenu()" [ngClass]="status ? 'clicked' : 'unclicked'">
+        <span class="linie"></span>
+        <span class="linie"></span>
+        <span class="linie"></span>
+        <span class="linie"></span>
+        <span class="linie"></span>
+        <span class="linie"></span>
+    </div>
+  </nav>
+  <gridster [options]="options">
+      <gridster-item [item]="item" *ngFor="let item of dashboard">
+        <div class="button-holder">
+          <div class="gridster-item-content" *ngIf="item.hasContent">
+            <div class="stuff">
+              <span>Some content to select and click without dragging the widget</span>
+              <a href="https://www.google.com" target="_blank">Link to Google</a>
             </div>
-            <div class="item-buttons" *ngIf="item.hasContent">
-              <button mat-icon-button mat-raised-button class="drag-handler">
-                open
-              </button>
-              <button mat-icon-button mat-raised-button class="remove-button" (mousedown)="removeItem($event, item)"
-                      (touchstart)="removeItem($event, item)">
-                delete
-              </button>
-            </div>
-            <label *ngIf="!item.hasContent">{{item.label}}</label>
-            <button mat-mini-fab *ngIf="!item.hasContent" (mousedown)="removeItem($event, item)"
+          </div>
+          <div class="item-buttons" *ngIf="item.hasContent">
+            <button mat-icon-button mat-raised-button class="drag-handler">
+              open
+            </button>
+            <button mat-icon-button mat-raised-button class="remove-button" (mousedown)="removeItem($event, item)"
                     (touchstart)="removeItem($event, item)">
-             delete
+              delete
             </button>
           </div>
-        </gridster-item>
-      </gridster>
+          <label *ngIf="!item.hasContent">{{item.label}}</label>
+          <button mat-mini-fab *ngIf="!item.hasContent" (mousedown)="removeItem($event, item)"
+                  (touchstart)="removeItem($event, item)">
+            delete
+          </button>
+        </div>
+      </gridster-item>
+    </gridster>
     <!-- <app-template-clock></app-template-clock>
     <app-template-calendar></app-template-calendar>
     <app-template-todo-list></app-template-todo-list> -->
