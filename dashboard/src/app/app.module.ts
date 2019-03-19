@@ -17,6 +17,10 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { GridsterModule } from 'angular-gridster2';
 import { WeatherComponent } from './weather/weather.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire';
+import * as firebase from 'firebase';
+
 
 
 export function tokenGetter() {
@@ -44,6 +48,8 @@ export function tokenGetter() {
     GridsterModule,
     FormsModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(firebase),
+    AngularFireAuthModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter

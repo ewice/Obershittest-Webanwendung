@@ -5,6 +5,7 @@
           <div class="button-holder">
             <div class="gridster-item-content" *ngIf="item.hasContent">
               <app-weather *ngIf="item.type == 'weather'"></app-weather>
+              <app-calendar *ngIf="item.type == 'calendar'"></app-calendar>
             </div>
               <button mat-icon-button mat-raised-button class="remove-button" (mousedown)="removeItem($event, item)"
                       (touchstart)="removeItem($event, item)">
