@@ -3740,3 +3740,4 @@ dashboard/node_modules/@angular-devkit/build-angular/node_modules/@angular-devki
 dashboard/node_modules/@angular-devkit/build-angular/node_modules/@angular-devkit/core/package.json
 dashboard/node_modules/@angular-devkit/build-angular/node_modules/ajv/package.json
 server/node_modules/bcrypt/lib/binding/bcrypt_lib.node
+server/node_modules/bcrypt/lib/binding/bcrypt_lib.node
