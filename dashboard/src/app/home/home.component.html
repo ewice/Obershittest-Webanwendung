@@ -1,4 +1,5 @@
-﻿<div id="dashboard">
+﻿<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div id="dashboard">
     <gridster [options]="options">
         <gridster-item [item]="item" *ngFor="let item of dashboard">
           <div class="button-holder">
@@ -14,13 +15,13 @@
               </button>
               <button mat-icon-button mat-raised-button class="remove-button" (mousedown)="removeItem($event, item)"
                       (touchstart)="removeItem($event, item)">
-                delete
+                <i class="fa fa-close"></i>
               </button>
             </div>
             <label *ngIf="!item.hasContent">{{item.label}}</label>
             <button mat-mini-fab *ngIf="!item.hasContent" (mousedown)="removeItem($event, item)"
                     (touchstart)="removeItem($event, item)">
-             delete
+             <i class="fa fa-close"></i>
             </button>
           </div>
         </gridster-item>

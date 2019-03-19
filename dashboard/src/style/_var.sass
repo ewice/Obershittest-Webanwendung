@@ -1,8 +1,15 @@
 // Color Palette
-$background: #282F3A
+$background: #343434
+$dark-grey: #343434
+$light-grey: #F4F4F4
+$dark-blue: #197672
+$blue: #6CCECA
+$light-blue: #C3E6E5
 $red: #BC3D44
-$green: #5FBA7D
+$black: #0A0A0A
+$green: #086900
 $white: #ffffff
+
 
 // Padding & maring, Sizing
 $cube: 1rem
@@ -38,6 +45,30 @@ $font: "Montserrat", sans-serif
     background-color: $green
     color: white
 
+.btn-blue
+    background-color: $blue
+    color: $white
+    max-width: 130px
+    &:hover
+        background-color: $white
+        color: $blue
+
 .btn-ghost
-    color: $green
+    color: $blue
+    border: 1px solid $blue
     text-decoration: none
+    margin-left: 20%
+    max-width: 130px
+    &:hover
+        background-color: $white
+        color: $blue
+        border: 1px solid transparent
+
+button
+  background-color: transparent
+  border: none
+  i
+      color: $light-grey
+      font-weight: bold
+      &:hover
+          color: $black
