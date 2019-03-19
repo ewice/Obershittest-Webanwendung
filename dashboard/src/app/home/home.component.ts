@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
       resizable: {
         enabled: true,
       },
-      swap: false,
+      swap: true,
       pushItems: true,
       disablePushOnDrag: false,
       disablePushOnResize: false,
@@ -79,8 +79,8 @@ export class HomeComponent implements OnInit {
    };
 
    this.dashboard = [
-    {cols: 2, rows: 1, y: 0, x: 0},
-    {cols: 2, rows: 2, y: 0, x: 2, hasContent: true},
+    {cols: 2, rows: 1, y: 0, x: 0, hasContent: true, type: 'weather'},
+    {cols: 2, rows: 2, y: 0, x: 2, hasContent: false},
     {cols: 1, rows: 1, y: 0, x: 4},
     {cols: 1, rows: 1, y: 2, x: 5},
     {cols: 1, rows: 1, y: 1, x: 0},
@@ -88,7 +88,7 @@ export class HomeComponent implements OnInit {
     {cols: 2, rows: 2, y: 3, x: 5, minItemRows: 2, minItemCols: 2, label: 'Min rows & cols = 2'},
     {cols: 2, rows: 2, y: 2, x: 0, maxItemRows: 2, maxItemCols: 2, label: 'Max rows & cols = 2'},
     {cols: 2, rows: 1, y: 2, x: 2, dragEnabled: true, resizeEnabled: true, label: 'Drag&Resize Enabled'},
-    {cols: 1, rows: 1, y: 2, x: 4, dragEnabled: false, resizeEnabled: false, label: 'Drag&Resize Disabled'},
+    {cols: 1, rows: 1, y: 2, x: 4, dragEnabled: true, resizeEnabled: false, label: 'Drag&Resize Disabled'},
     {cols: 1, rows: 1, y: 2, x: 6}
   ];
   }
