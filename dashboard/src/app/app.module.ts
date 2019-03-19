@@ -16,7 +16,6 @@ import { HttpService, AuthService } from './_services';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { GridsterModule } from 'angular-gridster2';
-import { WeatherComponent } from './weather/weather.component';
 
 
 export function tokenGetter() {
@@ -34,8 +33,7 @@ export function tokenGetter() {
     ClockComponent,
     TemplateTodoComponent,
     TemplateTodoFormComponent,
-    TodoListComponent,
-    WeatherComponent
+    TodoListComponent
   ],
   imports: [
     BrowserModule,
