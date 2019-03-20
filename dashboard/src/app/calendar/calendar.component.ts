@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthFirebaseService } from '../_services/auth-firebase.service';
 
 @Component({
   selector: 'app-calendar',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthFirebaseService) {
+   }
 
   ngOnInit() {
   }

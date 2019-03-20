@@ -4,8 +4,8 @@
         <gridster-item [item]="item" *ngFor="let item of dashboard">
           <div class="button-holder">
             <div class="gridster-item-content" *ngIf="item.hasContent">
-              <app-weather *ngIf="item.type == 'weather'"></app-weather>
               <app-calendar *ngIf="item.type == 'calendar'"></app-calendar>
+              <app-weather *ngIf="item.type == 'weather'"></app-weather>
             </div>
               <button mat-icon-button mat-raised-button class="remove-button" (mousedown)="removeItem($event, item)"
                       (touchstart)="removeItem($event, item)">

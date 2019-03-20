@@ -21,15 +21,15 @@ export class AuthFirebaseService {
   // Initialize the Google API client with desired scopes
   initClient() {
     gapi.load('client', () => {
-      console.log('loaded client')
+      console.log('loaded client');
 
       // It's OK to expose these credentials, they are client safe.
       gapi.client.init({
-        apiKey: 'AIzaSyB-YrOhUToCLoFzXNBgLCWHwVbno8MAze0',
+        apiKey: 'AIzaSyAIlzWsmdNdJvMBLzuDz2XRLDCYf2Jq8aA',
         clientId: '948806960933-jkukoqbs0clqsg9elfeeli94jka3j78v.apps.googleusercontent.com',
         discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
         scope: 'https://www.googleapis.com/auth/calendar'
-      })
+      });
 
       gapi.client.load('calendar', 'v3', () => console.log('loaded calendar'));
 
@@ -42,12 +42,13 @@ export class AuthFirebaseService {
 
     const token = googleUser.getAuthResponse().id_token;
 
-    console.log(googleUser)
+    console.log(googleUser);
 
     const credential = auth.GoogleAuthProvider.credential(token);
 
     await this.afAuth.auth.signInAndRetrieveDataWithCredential(credential);
 
+    console.log(credential);
 
     // Alternative approach, use the Firebase login with scopes and make RESTful API calls
     // const provider = new auth.GoogleAuthProvider()
@@ -80,11 +81,11 @@ export class AuthFirebaseService {
     const insert = await gapi.client.calendar.events.insert({
       calendarId: 'primary',
       start: {
-        dateTime: hoursFromNow(2),
+        dateTime: this.hoursFromNow(2),
         timeZone: 'America/Los_Angeles'
       },
       end: {
-        dateTime: hoursFromNow(3),
+        dateTime: this.hoursFromNow(3),
         timeZone: 'America/Los_Angeles'
       },
       summary: 'Have Fun!!!',
@@ -96,5 +97,5 @@ export class AuthFirebaseService {
 
   // ... helper function
 
-  const hoursFromNow = (n) => new Date(Date.now() + n * 1000 * 60 * 60 ).toISOString();
+   hoursFromNow = (n) => new Date(Date.now() + n * 1000 * 60 * 60 ).toISOString();
 }
