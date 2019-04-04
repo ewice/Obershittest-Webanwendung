@@ -4,7 +4,7 @@
         <gridster-item [item]="item" *ngFor="let item of dashboard">
           <div class="button-holder">
             <div class="gridster-item-content" *ngIf="item.hasContent">
-              <app-calendar *ngIf="item.type == 'calendar'"></app-calendar>
+              <app-calendar *ngIf="item.type == 'calendar'" ></app-calendar>
               <app-weather *ngIf="item.type == 'weather'"></app-weather>
               <app-template-todo-list *ngIf="item.type == 'todo'"></app-template-todo-list>
             </div>

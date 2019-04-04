@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { User, ToDo } from '../_interface';
 import { AuthService } from '../_services/auth.service';
+import { Wettersettings } from '../_interface/wettersettings';
 
 
 @Injectable({
@@ -16,6 +17,7 @@ export class HttpService {
 
   urlTodos = 'http://localhost:3000/todos/';
   urlUsers = 'http://localhost:3000/users/';
+  urlWeather = 'http://localhost:3000/weather/';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -109,4 +111,14 @@ public putToDo(object: ToDo): Observable<ToDo> {
    return this._http.get<User>(this.urlUsers + uid, this.httpOptions);
   }
 
+
+  sendWeatherSettings(settings: Wettersettings) {
+    this._http.post<Wettersettings>(this.urlWeather, settings, this.httpOptions).subscribe();
+    console.log('done');
+
+  }
+
+  getWeatherSettings() {
+    return this._http.get<Wettersettings>(this.urlWeather, this.httpOptions);
+  }
 }
