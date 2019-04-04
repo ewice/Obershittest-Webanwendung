@@ -1,8 +1,17 @@
+<h1 class="gridster-item-headline">TO-DO's</h1>
 <div class="todo-form">
   <div class="todo-content">
-      <input type="text" (keyup.enter)="createToDo($event)" [(ngModel)]="toDo$.label" placeholder="Name des ToDo-Punktes">
+      <input type="text" (keyup.enter)="createToDo($event)" [(ngModel)]="toDo$.label" placeholder="To-Do erstellen">
   </div>
   <div class="create" (click)="createToDo($event)">
-      <span>Erstellen</span>
+      <span>+</span>
   </div>
+  <form [formGroup]="colorForm">
+    <select name="colorPicker" [(ngModel)]="bg">
+      <option *ngFor="let bg of backgroundColors" [ngValue]="bg">
+        {{ bg.background }}
+      </option>
+    </select>
+  </form>
 </div>
+

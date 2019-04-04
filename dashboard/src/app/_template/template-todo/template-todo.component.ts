@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ToDo, EventPing } from '../../_interface';
 import { HttpService } from '../../_services';
+import { ColorPaletteService } from '../../_services/color-palette.service';
 
 @Component({
   selector: 'app-template-todo',
