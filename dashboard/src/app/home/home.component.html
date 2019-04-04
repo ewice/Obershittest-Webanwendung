@@ -6,6 +6,7 @@
             <div class="gridster-item-content" *ngIf="item.hasContent">
               <app-weather *ngIf="item.type == 'weather'"></app-weather>
               <app-template-todo-list *ngIf="item.type == 'todo'"></app-template-todo-list>
+              <app-spotify *ngIf="item.type =='spotify'"></app-spotify>
             </div>
               <button mat-icon-button mat-raised-button class="remove-button" (mousedown)="removeItem($event, item)"
                       (touchstart)="removeItem($event, item)">
