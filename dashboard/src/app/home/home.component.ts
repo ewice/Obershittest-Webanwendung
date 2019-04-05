@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit {
    this.dashboard = [
     {cols: 2, rows: 1, y: 0, x: 0, hasContent: true, type: 'weather'},
     {cols: 2, rows: 2, y: 0, x: 2, hasContent: false},
-    {cols: 1, rows: 1, y: 0, x: 4},
+    {cols: 3, rows: 2, y: 0, x: 4, hasContent: true, type: 'youtube'},
     {cols: 1, rows: 1, y: 2, x: 5},
     {cols: 1, rows: 1, y: 1, x: 0},
     {cols: 1, rows: 1, y: 1, x: 0},
