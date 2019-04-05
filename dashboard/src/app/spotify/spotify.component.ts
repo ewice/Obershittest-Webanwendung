@@ -90,5 +90,76 @@ togglePLay(){
     });
 
   }
+  next() {
+    let token: String;
+    this.route.fragment.subscribe(fragment => {
+      token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer ' + token
+        })
+      };
 
+      this.httpClient.post('https://api.spotify.com/v1/me/player/next',"", httpOptions)
+        .subscribe(
+          data => {
+
+            console.log('PUT Request is successful ', data);
+          },
+          error => {
+            console.log('Error', error);
+
+          }
+        );
+    });
+
+  }
+  back() {
+    let token: String;
+    this.route.fragment.subscribe(fragment => {
+      token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer ' + token
+        })
+      };
+
+      this.httpClient.post('https://api.spotify.com/v1/me/player/previous',"", httpOptions)
+        .subscribe(
+          data => {
+
+            console.log('PUT Request is successful ', data);
+          },
+          error => {
+            console.log('Error', error);
+
+          }
+        );
+    });
+
+  }
+getTrackInfo(){
+  let token: String;
+    this.route.fragment.subscribe(fragment => {
+      token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer ' + token
+        })
+      };
+
+      this.httpClient.get('https://api.spotify.com/v1/me/player/currently-playing', httpOptions)
+        .subscribe(
+          data => {
+
+            console.log('Get request geklappt ', data);
+          },
+          error => {
+            console.log('Error', error);
+
+          }
+        );
+    });
+
+}
 }
