@@ -5,10 +5,11 @@ import { map, filter, debounceTime, tap, switchAll } from 'rxjs/operators';
 import { VideoDetail } from '../video-detail.model';
 import { YoutubeSearchService } from 'src/app/_services/youtube-search.service';
 
+
 @Component({
   selector: 'app-search-box',
   templateUrl: './search-box.component.html',
-  styleUrls: ['./search-box.component.css']
+  styleUrls: ['./search-box.component.sass']
 })
 export class SearchBoxComponent implements OnInit {
   @Output() loading = new EventEmitter<boolean>();
