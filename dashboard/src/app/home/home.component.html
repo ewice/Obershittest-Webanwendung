@@ -7,7 +7,8 @@
               <app-weather *ngIf="item.type == 'weather'"></app-weather>
               <app-template-todo-list *ngIf="item.type == 'todo'"></app-template-todo-list>
 
-                <div class='container' *ngIf="item.type == 'youtube'">
+
+                <div class='container'  *ngIf="item.type == 'youtube'">
                     <div class="page-header">
                         <h2>YouTube
                             <img style="float: right;" *ngIf="loading" src='assets/images/loading.gif' />
@@ -25,6 +26,7 @@
                         <app-search-result *ngFor="let result of results" [result]="result"></app-search-result>
                     </div>
                 </div>
+
 
             </div>
 
