@@ -112,13 +112,13 @@ export class HomeComponent implements OnInit {
   addItem() {
     this.dashboard.push({x: 0, y: 0, cols: 1, rows: 1});
   }
-}
 
-updateResults(results: VideoDetail[]): void {
-  this.results = results;
-if (this.results.length === 0) {
-  this.message = 'Not found...';
-} else {
-  this.message = 'Top 10 results:';
-}
+  updateResults(results: VideoDetail[]): void {
+    this.results = results;
+    if (this.results.length === 0) {
+      this.message = 'Not found...';
+    } else {
+      this.message = 'Top 10 results:';
+    }
+  }
 }
