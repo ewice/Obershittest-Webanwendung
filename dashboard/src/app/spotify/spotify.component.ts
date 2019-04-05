@@ -12,7 +12,7 @@ export class SpotifyComponent implements OnInit {
 
   toggle = true;
   artist: String="";
-  album: String;
+  track: String;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,10 +23,11 @@ export class SpotifyComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getTrackInfo();
   }
   togglePLay() {
 
-
+this.getTrackInfo();
     if (this.toggle === true) {
       this.play();
       this.toggle = !this.toggle;
@@ -42,6 +43,7 @@ export class SpotifyComponent implements OnInit {
 
 
   play() {
+
     let token: String;
     this.route.fragment.subscribe(fragment => {
       token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
@@ -68,7 +70,8 @@ export class SpotifyComponent implements OnInit {
 
   }
   pause() {
-    let token: String;
+
+        let token: String;
     this.route.fragment.subscribe(fragment => {
       token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
       const httpOptions = {
@@ -92,8 +95,7 @@ export class SpotifyComponent implements OnInit {
 
   }
   next() {
-    this.artist="";
-    this.album="";
+    this.getTrackInfo();
     let token: String;
     this.route.fragment.subscribe(fragment => {
       token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
@@ -108,6 +110,7 @@ export class SpotifyComponent implements OnInit {
           data => {
 
             console.log('PUT Request is successful ', data);
+
           },
           error => {
             console.log('Error', error);
@@ -115,13 +118,10 @@ export class SpotifyComponent implements OnInit {
           }
         );
     });
-    this.getTrackInfo();
-
+this.toggle=true;
   }
   back() {
 
-    this.artist="";
-    this.album="";
     let token: String;
     this.route.fragment.subscribe(fragment => {
       token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
@@ -135,7 +135,12 @@ export class SpotifyComponent implements OnInit {
         .subscribe(
           data => {
 
-            console.log('PUT Request is successful ', data);
+            console.log('PUT Request is successful ', data, this.artist);
+
+            this.artist="";
+            this.getTrackInfo();
+            console.log(this.artist)
+
           },
           error => {
             console.log('Error', error);
@@ -143,9 +148,12 @@ export class SpotifyComponent implements OnInit {
           }
         );
     });
-this.getTrackInfo();
+
+this.toggle=true;
   }
   getTrackInfo() {
+    this.artist="";
+    this.track="";
     let token: String;
     this.route.fragment.subscribe(fragment => {
       token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
@@ -160,14 +168,14 @@ this.getTrackInfo();
           data => {
 
             console.log('Get request geklappt ', data, data["item"].name,data["item"].artists[0].name );
-            this.album = data["item"].name;
+            this.track = data["item"].name;
 
             data["item"].artists.forEach(element => {
               this.artist+=", "+element.name;
 
             });
             this.artist = this.artist.substring(2, this.artist.length);
-            console.log(this.artist, this.album);
+            console.log(this.artist, this.track);
 
 
 
