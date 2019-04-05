@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router, Params } from "@angular/router";
 
-
 @Component({
   selector: 'app-spotify',
   templateUrl: './spotify.component.html',
@@ -12,6 +11,8 @@ import { ActivatedRoute, Router, Params } from "@angular/router";
 export class SpotifyComponent implements OnInit {
 
   toggle = true;
+  artist: String="";
+  album: String;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,21 +24,21 @@ export class SpotifyComponent implements OnInit {
 
   ngOnInit() {
   }
-togglePLay(){
+  togglePLay() {
 
 
-  if (this.toggle === true){
-    this.play();
-    this.toggle = !this.toggle;
+    if (this.toggle === true) {
+      this.play();
+      this.toggle = !this.toggle;
 
 
-  }else if ( this.toggle === false){
-  this.pause();
-  this.toggle = !this.toggle;
+    } else if (this.toggle === false) {
+      this.pause();
+      this.toggle = !this.toggle;
 
 
-}
-}
+    }
+  }
 
 
   play() {
@@ -91,6 +92,8 @@ togglePLay(){
 
   }
   next() {
+    this.artist="";
+    this.album="";
     let token: String;
     this.route.fragment.subscribe(fragment => {
       token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
@@ -100,7 +103,7 @@ togglePLay(){
         })
       };
 
-      this.httpClient.post('https://api.spotify.com/v1/me/player/next',"", httpOptions)
+      this.httpClient.post('https://api.spotify.com/v1/me/player/next', "", httpOptions)
         .subscribe(
           data => {
 
@@ -112,9 +115,13 @@ togglePLay(){
           }
         );
     });
+    this.getTrackInfo();
 
   }
   back() {
+
+    this.artist="";
+    this.album="";
     let token: String;
     this.route.fragment.subscribe(fragment => {
       token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
@@ -124,7 +131,7 @@ togglePLay(){
         })
       };
 
-      this.httpClient.post('https://api.spotify.com/v1/me/player/previous',"", httpOptions)
+      this.httpClient.post('https://api.spotify.com/v1/me/player/previous', "", httpOptions)
         .subscribe(
           data => {
 
@@ -136,10 +143,10 @@ togglePLay(){
           }
         );
     });
-
+this.getTrackInfo();
   }
-getTrackInfo(){
-  let token: String;
+  getTrackInfo() {
+    let token: String;
     this.route.fragment.subscribe(fragment => {
       token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
       const httpOptions = {
@@ -152,7 +159,18 @@ getTrackInfo(){
         .subscribe(
           data => {
 
-            console.log('Get request geklappt ', data);
+            console.log('Get request geklappt ', data, data["item"].name,data["item"].artists[0].name );
+            this.album = data["item"].name;
+
+            data["item"].artists.forEach(element => {
+              this.artist+=", "+element.name;
+
+            });
+            this.artist = this.artist.substring(2, this.artist.length);
+            console.log(this.artist, this.album);
+
+
+
           },
           error => {
             console.log('Error', error);
@@ -161,5 +179,5 @@ getTrackInfo(){
         );
     });
 
-}
+  }
 }
