@@ -6,12 +6,6 @@
   <div class="create" (click)="createToDo($event)">
       <span>+</span>
   </div>
-  <form [formGroup]="colorForm">
-    <select name="colorPicker" [(ngModel)]="bg">
-      <option *ngFor="let bg of backgroundColors" [ngValue]="bg">
-        {{ bg.background }}
-      </option>
-    </select>
-  </form>
 </div>
+
 

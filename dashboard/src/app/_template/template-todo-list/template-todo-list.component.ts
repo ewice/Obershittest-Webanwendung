@@ -75,7 +75,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
           return obj1.position - obj2.position;
         });
       }, error => {
-          console.log(`%cERROR: ${error.message}`, `color: red; font-size: 12px;`);
+          console.log(`%cERROR: ${error.message}`, `color: green; font-size: 12px;`);
       });
     }
 
