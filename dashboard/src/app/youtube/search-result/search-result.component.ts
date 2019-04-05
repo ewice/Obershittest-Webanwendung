@@ -15,4 +15,8 @@ export class SearchResultComponent implements OnInit {
   ngOnInit() {
   }
 
+  onNavigate() {
+    window.open(this.result.videoUrl, '_blank');
+  }
+
 }
