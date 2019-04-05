@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router, Params } from "@angular/router";
-let toggle:Boolean;
-      toggle =true;
+
 
 @Component({
   selector: 'app-spotify',
@@ -11,6 +10,9 @@ let toggle:Boolean;
 })
 
 export class SpotifyComponent implements OnInit {
+
+  toggle = true;
+
   constructor(
     private route: ActivatedRoute,
     private httpClient: HttpClient) {
@@ -24,14 +26,14 @@ export class SpotifyComponent implements OnInit {
 togglePLay(){
 
 
-  if (toggle === true){
+  if (this.toggle === true){
     this.play();
-    toggle = false;
-    
+    this.toggle = !this.toggle;
 
-  }else if ( toggle === false){
+
+  }else if ( this.toggle === false){
   this.pause();
-  toggle = true;
+  this.toggle = !this.toggle;
 
 
 }

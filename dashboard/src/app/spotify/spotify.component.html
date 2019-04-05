@@ -2,8 +2,9 @@
   <h2 >Open your console log: <code >View > Developer > JavaScript Console</code></h2>
 <div>
  <a href="https://accounts.spotify.com/authorize?client_id=05cd27ba45954604967db28cfd533e0d&redirect_uri=http://localhost:4200/&scope=user-read-private%20user-read-email%20user-modify-playback-state&response_type=token&state=123">KLick me</a>
-<button (click)="togglePLay()"><i class="fa fa-play"></i>
+<button (click)="togglePLay()" *ngIf="toggle">
+  <i class="fa fa-play"></i>
 </button>
-<button (click)="pause()">Pause</button>
+<button  (click)="togglePLay()" *ngIf="!toggle" class="fa fa-pause"></button>
 
 </div>
