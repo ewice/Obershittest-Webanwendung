@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router, Params } from "@angular/router";
+import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-spotify',
@@ -11,7 +12,7 @@ import { ActivatedRoute, Router, Params } from "@angular/router";
 export class SpotifyComponent implements OnInit {
 
   toggle = true;
-  artist: String="";
+  artist: String = "";
   track: String;
 
   constructor(
@@ -27,7 +28,7 @@ export class SpotifyComponent implements OnInit {
   }
   togglePLay() {
 
-this.getTrackInfo();
+    this.getTrackInfo();
     if (this.toggle === true) {
       this.play();
       this.toggle = !this.toggle;
@@ -56,22 +57,17 @@ this.getTrackInfo();
       this.httpClient.put('https://api.spotify.com/v1/me/player/play', "{}", httpOptions)
         .subscribe(
           data => {
-
             console.log('PUT Request is successful ', data);
           },
           error => {
             console.log('Error', error);
-
           }
         );
     })
-
-
-
   }
   pause() {
 
-        let token: String;
+    let token: String;
     this.route.fragment.subscribe(fragment => {
       token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
       const httpOptions = {
@@ -83,19 +79,16 @@ this.getTrackInfo();
       this.httpClient.put('https://api.spotify.com/v1/me/player/pause', "", httpOptions)
         .subscribe(
           data => {
-
             console.log('PUT Request is successful ', data);
           },
           error => {
             console.log('Error', error);
-
           }
         );
     });
-
   }
+
   next() {
-    this.getTrackInfo();
     let token: String;
     this.route.fragment.subscribe(fragment => {
       token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
@@ -118,10 +111,11 @@ this.getTrackInfo();
           }
         );
     });
-this.toggle=true;
+    this.toggle = true;
+    this.getTrackInfo();
   }
-  back() {
 
+  back() {
     let token: String;
     this.route.fragment.subscribe(fragment => {
       token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
@@ -134,26 +128,23 @@ this.toggle=true;
       this.httpClient.post('https://api.spotify.com/v1/me/player/previous', "", httpOptions)
         .subscribe(
           data => {
-
             console.log('PUT Request is successful ', data, this.artist);
 
-            this.artist="";
+            this.artist = "";
             this.getTrackInfo();
             console.log(this.artist)
-
           },
           error => {
             console.log('Error', error);
-
           }
         );
     });
 
-this.toggle=true;
+    this.toggle = true;
   }
   getTrackInfo() {
-    this.artist="";
-    this.track="";
+    this.artist = "";
+    this.track = "";
     let token: String;
     this.route.fragment.subscribe(fragment => {
       token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
@@ -167,25 +158,20 @@ this.toggle=true;
         .subscribe(
           data => {
 
-            console.log('Get request geklappt ', data, data["item"].name,data["item"].artists[0].name );
+            console.log('Get request geklappt ', data, data["item"].name, data["item"].artists[0].name);
             this.track = data["item"].name;
 
             data["item"].artists.forEach(element => {
-              this.artist+=", "+element.name;
-
+              this.artist += ", " + element.name;
             });
+
             this.artist = this.artist.substring(2, this.artist.length);
             console.log(this.artist, this.track);
-
-
-
           },
           error => {
             console.log('Error', error);
-
           }
         );
     });
-
   }
 }
