@@ -4,6 +4,7 @@ import { map, filter, debounceTime, tap, switchAll } from 'rxjs/operators';
 
 import { VideoDetail } from '../video-detail.model';
 import { YoutubeSearchService } from 'src/app/_services/youtube-search.service';
+import {log} from "util";
 
 
 @Component({
@@ -30,6 +31,7 @@ export class SearchBoxComponent implements OnInit {
             _results => {
               this.loading.emit(false);
               this.results.emit(_results);
+              console.log(_results);
             },
             err => {
               console.log(err);

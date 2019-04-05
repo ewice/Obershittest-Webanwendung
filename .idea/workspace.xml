@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ee66ae3-58f0-457d-81e4-8f9c206cedb9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/dashboard/src/app/_services/youtube-search.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/src/app/_services/youtube-search.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/app/youtube/search-box/search-box.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/src/app/youtube/search-box/search-box.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/src/app/youtube/search-result/search-result.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/src/app/youtube/search-result/search-result.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/src/app/youtube/search-result/search-result.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/src/app/youtube/search-result/search-result.component.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +26,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dashboard/src/app/youtube/search-box/search-box.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+            <state relative-caret-position="360">
+              <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
               <folding>
                 <element signature="e#0#84#0" expanded="true" />
               </folding>
@@ -46,11 +47,35 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dashboard/src/app/youtube/search-result/search-result.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="36" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="36" />
+            <state relative-caret-position="45">
+              <caret line="3" column="47" lean-forward="true" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dashboard/src/app/_services/youtube-search.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="18" column="40" lean-forward="true" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dashboard/src/app/_services/http.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="4" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="24" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#63#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -82,28 +107,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dashboard/src/app/youtube/search-box/search-box.component.sass">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dashboard/src/app/youtube/search-result/search-result.component.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
               <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dashboard/src/app/youtube/search-box/search-box.component.spec.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#73#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -126,13 +135,13 @@
         <option value="$PROJECT_DIR$/dashboard/src/app/youtube/video-details.model.ts" />
         <option value="$PROJECT_DIR$/dashboard/src/app/youtube/search-box/search-box.component.html" />
         <option value="$PROJECT_DIR$/dashboard/src/app/youtube/search-result/search-result.component.spec.ts" />
-        <option value="$PROJECT_DIR$/dashboard/src/app/_services/youtube-search.service.ts" />
         <option value="$PROJECT_DIR$/dashboard/src/app/_services/youtube-search.service.spec.ts" />
-        <option value="$PROJECT_DIR$/dashboard/src/app/youtube/search-box/search-box.component.ts" />
         <option value="$PROJECT_DIR$/dashboard/src/app/home/home.component.html" />
         <option value="$PROJECT_DIR$/dashboard/src/app/home/home.component.ts" />
-        <option value="$PROJECT_DIR$/dashboard/src/app/youtube/search-result/search-result.component.html" />
         <option value="$PROJECT_DIR$/dashboard/src/app/youtube/search-result/search-result.component.ts" />
+        <option value="$PROJECT_DIR$/dashboard/src/app/youtube/search-result/search-result.component.html" />
+        <option value="$PROJECT_DIR$/dashboard/src/app/youtube/search-box/search-box.component.ts" />
+        <option value="$PROJECT_DIR$/dashboard/src/app/_services/youtube-search.service.ts" />
       </list>
     </option>
   </component>
@@ -262,12 +271,12 @@
       <updated>1552916938384</updated>
       <workItem from="1552916941464" duration="5008000" />
       <workItem from="1553003198466" duration="1561000" />
-      <workItem from="1554378251561" duration="6360000" />
+      <workItem from="1554378251561" duration="7310000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7955000" />
+    <option name="totallyTimeSpent" value="8905000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="45" y="23" width="1440" height="828" extended-state="0" />
@@ -287,7 +296,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="TypeScript" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.23777173" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.061141305" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -388,16 +397,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/src/app/_services/youtube-search.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/src/app/_services/youtube-search.service.spec.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -447,16 +446,6 @@
     <entry file="file://$PROJECT_DIR$/dashboard/src/app/youtube/search-box/search-box.component.sass">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/src/app/youtube/search-box/search-box.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#84#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/src/app/youtube/search-result/search-result.component.sass">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -504,10 +493,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/src/app/youtube/search-box/search-box.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#84#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/src/app/youtube/search-result/search-result.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="36" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="36" />
+        <state relative-caret-position="45">
+          <caret line="3" column="47" lean-forward="true" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/src/app/_services/http.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="4" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="24" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/src/app/_services/youtube-search.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="18" column="40" lean-forward="true" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

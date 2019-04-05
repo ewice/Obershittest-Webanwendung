@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 import { Observable } from 'rxjs';
@@ -13,6 +13,12 @@ const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3/search';
 })
 export class YoutubeSearchService {
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Access-Control-Allow-Origin': '*'
+    })
+  };
   constructor(private http: HttpClient) { }
 
   search(query: string): Observable<VideoDetail[]> {
@@ -26,7 +32,7 @@ export class YoutubeSearchService {
 
     const queryUrl = `${YOUTUBE_API_URL}?${params}`;
 
-    return this.http.get(queryUrl).pipe(map(response => {
+    return this.http.get(queryUrl, this.httpOptions).pipe(map(response => {
       return response['items'].map(item => {
         return new VideoDetail({
           id: item.id.videoId,
