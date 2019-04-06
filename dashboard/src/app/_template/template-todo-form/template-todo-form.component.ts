@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ToDo } from '../../_interface';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-template-todo-form',
@@ -7,6 +9,7 @@ import { ToDo } from '../../_interface';
   styleUrls: ['./template-todo-form.component.sass']
 })
 export class TemplateTodoFormComponent implements OnInit {
+
 
   public toDo$: ToDo;
   @Output() ping: EventEmitter<ToDo> = new EventEmitter<ToDo>();
@@ -18,6 +21,7 @@ export class TemplateTodoFormComponent implements OnInit {
       status: false,
       position: undefined
     };
+
   }
 
   ngOnInit() {

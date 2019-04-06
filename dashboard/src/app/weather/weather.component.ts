@@ -55,8 +55,8 @@ export class WeatherComponent implements OnInit {
 
   constructor(private _http: HttpClient, private _httpS: HttpService) {
     _httpS.getWeatherSettings().subscribe(data => {
-      this.loadedWetterSettings.automaticLocation = data.doc.automaticLocation;
-      this.loadedWetterSettings.zip = data.doc.zip;
+      this.loadedWetterSettings.automaticLocation = data["doc"].automaticLocation;
+      this.loadedWetterSettings.zip = data["doc"].zip;
 
       console.log(this.loadedWetterSettings);
       this.weatherSettings.patchValue({
