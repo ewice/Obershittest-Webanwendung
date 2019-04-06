@@ -3,15 +3,15 @@
     <gridster [options]="options">
         <gridster-item [item]="item" *ngFor="let item of dashboard">
           <div class="button-holder">
+            <button mat-icon-button mat-raised-button class="remove-button" (mousedown)="removeItem($event, item)"
+              (touchstart)="removeItem($event, item)">
+              <i class="fa fa-close"></i>
+            </button>
             <div class="gridster-item-content" *ngIf="item.hasContent">
               <app-calendar *ngIf="item.type == 'calendar'" ></app-calendar>
               <app-weather *ngIf="item.type == 'weather'"></app-weather>
               <app-template-todo-list *ngIf="item.type == 'todo'"></app-template-todo-list>
             </div>
-              <button mat-icon-button mat-raised-button class="remove-button" (mousedown)="removeItem($event, item)"
-                      (touchstart)="removeItem($event, item)">
-                <i class="fa fa-close"></i>
-              </button>
             </div>
             <label *ngIf="!item.hasContent">{{item.label}}</label>
             <button mat-mini-fab *ngIf="!item.hasContent" (mousedown)="removeItem($event, item)"

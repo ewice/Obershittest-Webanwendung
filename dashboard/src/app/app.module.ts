@@ -12,7 +12,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DragulaModule } from 'ng2-dragula';
-
+import { FlipModule } from 'ngx-flip';
 
 import { HttpService, AuthService } from './_services';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
@@ -50,6 +50,7 @@ export function tokenGetter() {
     AppRoutingModule,
     ReactiveFormsModule,
     GridsterModule,
+    FlipModule,
     FormsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),

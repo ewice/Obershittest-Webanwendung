@@ -1,26 +1,26 @@
 <section>
-<span>
-  {{wetter.temp}}
-</span>
-<br>
-<span>
-  {{wetter.location}}
+<span id="temperatur">
+  {{wetter.temp}} &deg;C
 </span>
 <img src="{{ wetter.iconSrc }}" alt="" srcset="">
+<br>
+<h2>
+  Wetter in: {{wetter.location}}
+</h2>
 </section>
 <section class="settings">
   <form [formGroup]="weatherSettings" (ngSubmit)="onSubmit()">
     <label>
       PLZ:
-      <input type="text" formControlName="zip">
+      <input type="text" formControlName="zip" id="plzInputField">
     </label>
     <br>
     <label>
-      Position automatisch setzen?:
-      <input type="checkbox" formControlName="automaticLocation">
+      Standort automatisch setzen?
+      <input id="checkbox" type="checkbox" formControlName="automaticLocation">
     </label>
     <br>
-    <button type="submit" [disabled]="!weatherSettings.valid">Submit</button>
+    <button class="btn-settings" type="submit" [disabled]="!weatherSettings.valid">Suchen</button>
   </form>
 </section>
 
