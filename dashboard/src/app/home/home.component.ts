@@ -23,6 +23,8 @@ export class HomeComponent implements OnInit {
   }
   constructor() {}
   logout() {
+    console.log('test');
+
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
   }
@@ -83,7 +85,9 @@ export class HomeComponent implements OnInit {
    };
 
    this.dashboard = [
-    {cols: 2, rows: 1, y: 0, x: 0, hasContent: true, type: 'weather'},
+    {cols: 2, rows: 1, y: 0, x: 0, hasContent: true, type: 'weather', bg: '#222'},
+    {cols: 2, rows: 2, y: 0, x: 2, hasContent: false},
+    {cols: 1, rows: 1, y: 0, x: 4, hasContent: true, type: 'calendar'},
     {cols: 2, rows: 2, y: 0, x: 2, hasContent: true, type: 'todo'},
     {cols: 1, rows: 1, y: 0, x: 4},
     {cols: 2, rows: 2, y: 0, x: 2, hasContent: false},
