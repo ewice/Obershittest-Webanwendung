@@ -6,7 +6,7 @@ import { timeout } from 'rxjs/operators';
 @Component({
   selector: 'app-spotify',
   templateUrl: './spotify.component.html',
-  styleUrls: ['./spotify.component.scss']
+  styleUrls: ['./spotify.component.sass']
 })
 
 export class SpotifyComponent implements OnInit {
@@ -112,7 +112,7 @@ export class SpotifyComponent implements OnInit {
         );
     });
     this.toggle = true;
-    this.getTrackInfo();
+    setTimeout(() => this.getTrackInfo(), 250);
   }
 
   back() {
@@ -131,7 +131,6 @@ export class SpotifyComponent implements OnInit {
             console.log('PUT Request is successful ', data, this.artist);
 
             this.artist = "";
-            this.getTrackInfo();
             console.log(this.artist)
           },
           error => {
@@ -141,6 +140,8 @@ export class SpotifyComponent implements OnInit {
     });
 
     this.toggle = true;
+    setTimeout(() => this.getTrackInfo(), 250);
+
   }
   getTrackInfo() {
     this.artist = "";
