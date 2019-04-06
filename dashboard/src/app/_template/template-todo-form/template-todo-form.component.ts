@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ToDo } from '../../_interface';
-import { ColorPaletteService } from '../../_services/color-palette.service';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 
