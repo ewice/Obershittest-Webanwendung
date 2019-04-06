@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { User, ToDo } from '../_interface';
 import { AuthService } from '../_services/auth.service';
 import { Wettersettings } from '../_interface/wettersettings';
+import { GridsterItem } from 'angular-gridster2';
+import { DashboardPositions } from '../_interface/dashboard-positions';
 
 
 @Injectable({
@@ -18,6 +20,7 @@ export class HttpService {
   urlTodos = 'http://localhost:3000/todos/';
   urlUsers = 'http://localhost:3000/users/';
   urlWeather = 'http://localhost:3000/weather/';
+  urlDashboardPositions = 'http://localhost:3000/dashboardPositons/';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -120,5 +123,20 @@ public putToDo(object: ToDo): Observable<ToDo> {
 
   getWeatherSettings() {
     return this._http.get<Wettersettings>(this.urlWeather, this.httpOptions);
+  }
+
+  sendDashboardPositions(dashboard: Array<GridsterItem>) {
+    let temporalDashboard: DashboardPositions = {
+      dashboard: dashboard,
+      userId: localStorage.getItem("userId")
+    }
+
+    this._http.post<DashboardPositions>(this.urlDashboardPositions, temporalDashboard, this.httpOptions).subscribe(data => {
+
+    });
+  }
+
+  getDashboardPositions(): Observable<Array<GridsterItem>>{
+   return this._http.get<Array<GridsterItem>>(this.urlDashboardPositions + localStorage.getItem("userId"), this.httpOptions);
   }
 }

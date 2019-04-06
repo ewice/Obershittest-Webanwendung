@@ -1,7 +1,8 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 
-import {CompactType, DisplayGrid, GridsterConfig, GridsterItem, GridType} from 'angular-gridster2';
+import {CompactType, DisplayGrid, GridsterConfig, GridsterItem, GridType, GridsterItemComponentInterface} from 'angular-gridster2';
 import { VideoDetail } from '../youtube/video-detail.model';
+import { HttpService } from '../_services';
 
 @Component({
   selector: 'app-home',
@@ -15,16 +16,21 @@ export class HomeComponent implements OnInit {
   loading: boolean;
   message = '';
   static itemChange(item, itemComponent) {
-    console.log('itemChanged', item, itemComponent);
+    console.log('itemChanged');
   }
 
   static itemResize(item, itemComponent) {
     console.log('itemResized', item, itemComponent);
   }
-  constructor() {}
-  logout() {
-    console.log('test');
+  private eventStop(item: GridsterItem, itemComponent: GridsterItemComponentInterface, event: MouseEvent) {
+    this.savePositions();
+  }
 
+  constructor(private _http: HttpService) {
+
+  }
+
+  logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
   }
@@ -66,13 +72,14 @@ export class HomeComponent implements OnInit {
       emptyCellDragMaxCols: 50,
       emptyCellDragMaxRows: 50,
       ignoreMarginInRow: false,
-      draggable: {
-        enabled: true,
-      },
       resizable: {
         enabled: true,
       },
       swap: true,
+      draggable: {
+        enabled: true,
+        stop: this.eventStop.bind(this)
+      },
       pushItems: true,
       disablePushOnDrag: false,
       disablePushOnResize: false,
@@ -85,27 +92,25 @@ export class HomeComponent implements OnInit {
    };
 
    this.dashboard = [
-    {cols: 2, rows: 1, y: 0, x: 0, hasContent: true, type: 'weather', bg: '$background1'},
-    {cols: 2, rows: 2, y: 0, x: 2, hasContent: false},
-    {cols: 1, rows: 1, y: 0, x: 4, hasContent: true, type: 'calendar'},
-    {cols: 2, rows: 2, y: 0, x: 2, hasContent: true, type: 'todo', bg: '$background1'},
-    {cols: 1, rows: 1, y: 0, x: 4},
-    {cols: 2, rows: 2, y: 0, x: 2, hasContent: false},
-    {cols: 3, rows: 2, y: 0, x: 4, hasContent: true, type: 'youtube'},
-    {cols: 1, rows: 1, y: 2, x: 5},
-    {cols: 1, rows: 1, y: 1, x: 0},
-    {cols: 1, rows: 1, y: 1, x: 0},
-    {cols: 2, rows: 2, y: 3, x: 5, minItemRows: 2, minItemCols: 2, label: 'Min rows & cols = 2'},
-    {cols: 2, rows: 2, y: 2, x: 0, maxItemRows: 2, maxItemCols: 2, label: 'Max rows & cols = 2'},
-    {cols: 2, rows: 1, y: 2, x: 2, dragEnabled: true, resizeEnabled: true, label: 'Drag&Resize Enabled'},
-    {cols: 1, rows: 1, y: 2, x: 4, dragEnabled: true, resizeEnabled: false, label: 'Drag&Resize Disabled'},
-    {cols: 1, rows: 1, y: 2, x: 6}
   ];
+
+    this._http.getDashboardPositions().subscribe(data => {
+        console.log(data);
+
+        if(data["doc"] != null) {
+          this.dashboard = data["doc"].dashboard
+          console.log(this.dashboard);
+
+        }
+
+    });
   }
 
   changedOptions() {
     if (this.options.api && this.options.api.optionsChanged) {
       this.options.api.optionsChanged();
+      console.log("changed");
+
     }
   }
 
@@ -113,8 +118,12 @@ export class HomeComponent implements OnInit {
     $event.preventDefault();
     $event.stopPropagation();
     this.dashboard.splice(this.dashboard.indexOf(item), 1);
-  }
+    console.log("removed");
 
+  }
+  savePositions() {
+    this._http.sendDashboardPositions(this.dashboard);
+  }
   addItem() {
     this.dashboard.push({x: 0, y: 0, cols: 1, rows: 1});
   }
@@ -126,5 +135,8 @@ export class HomeComponent implements OnInit {
     } else {
       this.message = 'Top 10 results:';
     }
+
+  console.log(this.dashboard);
   }
+
 }

@@ -27,7 +27,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
         this.$todosdone = [];
         this.loadData();
 
-        this._dragulaService.createGroup('todos', {
+        this._dragulaService.createGroup('todos' + Math.random(), {
           removeOnSpill: false,
           moves: function (el, container, handle) {
               return handle.className === 'handle';
