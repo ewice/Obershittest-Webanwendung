@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   results: VideoDetail[];
   loading: boolean;
   message = '';
+  settingMenuIsActive = false;
   static itemChange(item, itemComponent) {
     console.log('itemChanged');
   }
@@ -23,19 +24,11 @@ export class HomeComponent implements OnInit {
     console.log('itemResized', item, itemComponent);
   }
   private eventStop(item: GridsterItem, itemComponent: GridsterItemComponentInterface, event: MouseEvent) {
-    this.savePositions();
   }
 
   constructor(private _http: HttpService) {
+    console.log("test");
 
-  }
-
-  logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userId');
-  }
-
-   ngOnInit() {
     this.options = {
       gridType: GridType.Fit,
       compactType: CompactType.CompactLeftAndUp,
@@ -78,7 +71,7 @@ export class HomeComponent implements OnInit {
       swap: true,
       draggable: {
         enabled: true,
-        stop: this.eventStop.bind(this)
+        stop: this.savePositions.bind(this)
       },
       pushItems: true,
       disablePushOnDrag: false,
@@ -91,19 +84,28 @@ export class HomeComponent implements OnInit {
       scrollToNewItems: false
    };
 
-   this.dashboard = [
-  ];
-
     this._http.getDashboardPositions().subscribe(data => {
         console.log(data);
 
-        if(data["doc"] != null) {
-          this.dashboard = data["doc"].dashboard
+        if(data["docs"] != null) {
+          this.dashboard = data["docs"].dashboard
           console.log(this.dashboard);
 
         }
+        else {
+          this.dashboard = data["doc"].dashboard
+        }
 
     });
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+  }
+
+   ngOnInit() {
+
   }
 
   changedOptions() {
@@ -121,8 +123,11 @@ export class HomeComponent implements OnInit {
     console.log("removed");
 
   }
-  savePositions() {
-    this._http.sendDashboardPositions(this.dashboard);
+  savePositions(item: GridsterItem, itemComponent: GridsterItemComponentInterface, event: MouseEvent) {
+    setTimeout( () => this._http.sendDashboardPositions(this.dashboard), 250 );
+
+    console.log(this.dashboard);
+
   }
   addItem() {
     this.dashboard.push({x: 0, y: 0, cols: 1, rows: 1});
@@ -135,8 +140,10 @@ export class HomeComponent implements OnInit {
     } else {
       this.message = 'Top 10 results:';
     }
+  }
 
-  console.log(this.dashboard);
+  toggleSettingsMenu() {
+    this.settingMenuIsActive = !this.settingMenuIsActive;
   }
 
 }

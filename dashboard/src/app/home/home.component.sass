@@ -52,5 +52,33 @@ app-template-clock
     align-items: center
 
 
+.hamburger-box
+  width: 20px
+  height: 10px
+  position: relative
+  .hamburger-top, .hamburger-inner, .hamburger-down
+    width: 20px
+    height: 2px
+    background: #222222
+    position: absolute
+    border-radius: 10px
+    transition: 300ms
+  .hamburger-top
+    top: 0
+  .hamburger-inner
+    top: 4px
+  .hamburger-down
+    bottom: 0
+
+.active
+  .hamburger-top
+    transform: rotate(-45deg) scale(0.65, 1)
+    left: -6px
+.active
+  .hamburger-down
+    transform: rotate(45deg) scale(0.65, 1)
+    left: -6px
+
+
 
 

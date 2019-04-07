@@ -40,6 +40,11 @@
                     (touchstart)="removeItem($event, item)">
              <i class="fa fa-close"></i>
             </button>
+                <div class="hamburger-box" (click)="toggleSettingsMenu()" [ngClass]="{'active': settingMenuIsActive}">
+                  <div class="hamburger-top"></div>
+                  <div class="hamburger-inner"></div>
+                  <div class="hamburger-down"></div>
+                </div>
         </gridster-item>
       </gridster>
     <!-- <app-template-clock></app-template-clock>
