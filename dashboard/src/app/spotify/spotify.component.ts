@@ -12,8 +12,9 @@ import { timeout } from 'rxjs/operators';
 export class SpotifyComponent implements OnInit {
 
   toggle = true;
-  artist: String = "";
+  artist: String = '';
   track: String;
+  albumUrl: String = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -112,8 +113,8 @@ export class SpotifyComponent implements OnInit {
         );
     });
     this.toggle = true;
-    this.track="";
-    this.artist="";
+    this.track = "";
+    this.artist = "";
     setTimeout(() => this.getTrackInfo(), 1000);
   }
 
@@ -142,8 +143,8 @@ export class SpotifyComponent implements OnInit {
     });
 
     this.toggle = true;
-    this.track="";
-    this.artist="";
+    this.track = '';
+    this.artist = '';
     setTimeout(() => this.getTrackInfo(), 1000);
 
   }
@@ -163,8 +164,9 @@ export class SpotifyComponent implements OnInit {
         .subscribe(
           data => {
 
-            console.log('Get request geklappt ', data, data["item"].name, data["item"].artists[0].name);
+            console.log('Get request geklappt ', data, data["item"].name, data["item"].artists[0].name, data["item"].album.images[1]);
             this.track = data["item"].name;
+            this.albumUrl=data["item"].album.images[1].url;
 
             data["item"].artists.forEach(element => {
               this.artist += ", " + element.name;
