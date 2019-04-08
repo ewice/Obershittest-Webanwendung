@@ -112,7 +112,9 @@ export class SpotifyComponent implements OnInit {
         );
     });
     this.toggle = true;
-    setTimeout(() => this.getTrackInfo(), 250);
+    this.track="";
+    this.artist="";
+    setTimeout(() => this.getTrackInfo(), 1000);
   }
 
   back() {
@@ -140,7 +142,9 @@ export class SpotifyComponent implements OnInit {
     });
 
     this.toggle = true;
-    setTimeout(() => this.getTrackInfo(), 250);
+    this.track="";
+    this.artist="";
+    setTimeout(() => this.getTrackInfo(), 1000);
 
   }
   getTrackInfo() {
