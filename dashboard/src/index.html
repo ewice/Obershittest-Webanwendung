@@ -13,35 +13,36 @@
 <body>
   <app-root></app-root>
   <script>
-      window.onSpotifyWebPlaybackSDKReady = () => {
-        const token = 'BQBBDbCavnLmSMpr2vLuDh17ZMlzxEmGU7uUudb8Wv11ZfJWnWyqwiu2fSjlZlfYFAmGn0xazgsck-aG_QEs6e-bvGtIX7HcQTDu7_I4sIP1pVPC4C0VZuDWe05DEnWIXSp21fYxYsL8FdsY0okU8P_-xO9VveL6uwrzlH7E';
-        const player = new Spotify.Player({
-          name: 'Web Playback SDK Quick Start Player',
-          getOAuthToken: cb => { cb(token); }
-        });
+    window.onSpotifyWebPlaybackSDKReady = () => {
+      const token = 'BQBiB1-VdChfwCyI_qTVCbk17qH4O-inJJenvGzSYQEhKD-qkPyZjo6aW33EhcLAlQlf6JT-_L7Mni9R98mV3QKA6FxiPCV6ThQ34coW-ZN9PDWnTrHIRz21pD8PyE4k8zOxsmQFwi4oDHf0H0JThRI93wcoM4f6i0pHGCtN';
+      const player = new Spotify.Player({
+        name: 'Web Playback SDK Quick Start Player',
+        getOAuthToken: cb => { cb(token); }
+      });
 
-        // Error handling
-        player.addListener('initialization_error', ({ message }) => { console.error(message); });
-        player.addListener('authentication_error', ({ message }) => { console.error(message); });
-        player.addListener('account_error', ({ message }) => { console.error(message); });
-        player.addListener('playback_error', ({ message }) => { console.error(message); });
+      // Error handling
+      player.addListener('initialization_error', ({ message }) => { console.error(message); });
+      player.addListener('authentication_error', ({ message }) => { console.error(message); });
+      player.addListener('account_error', ({ message }) => { console.error(message); });
+      player.addListener('playback_error', ({ message }) => { console.error(message); });
 
-        // Playback status updates
-        player.addListener('player_state_changed', state => { console.log(state); });
+      // Playback status updates
+      player.addListener('player_state_changed', state => { console.log(state); });
 
-        // Ready
-        player.addListener('ready', ({ device_id }) => {
-          console.log('Ready with Device ID', device_id);
-        });
+      // Ready
+      player.addListener('ready', ({ device_id }) => {
+        console.log('Ready with Device ID', device_id);
+      });
 
-        // Not Ready
-        player.addListener('not_ready', ({ device_id }) => {
-          console.log('Device ID has gone offline', device_id);
-        });
+      // Not Ready
+      player.addListener('not_ready', ({ device_id }) => {
+        console.log('Device ID has gone offline', device_id);
+      });
 
-        // Connect to the player!
-        player.connect();
-      }
-    </script>
+      // Connect to the player!
+      player.connect();
+    }
+  </script>
+
   </body>
 </html>
