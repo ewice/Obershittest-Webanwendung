@@ -1,6 +1,7 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  Input
 } from '@angular/core';
 import {
   HttpClient,
@@ -25,6 +26,7 @@ import {
   styleUrls: ['./weather.component.sass']
 })
 export class WeatherComponent implements OnInit {
+  @Input() active: Boolean;
 
   apiKey = "ea618f9320a674d69a89eda628786e04";
   httpOptions = {
@@ -50,7 +52,8 @@ export class WeatherComponent implements OnInit {
   };
   weatherSettings = new FormGroup({
     zip: new FormControl(this.loadedWetterSettings.zip),
-    automaticLocation: new FormControl('')
+    automaticLocation: new FormControl(''),
+    colorInput: new FormControl('')
   });
 
   constructor(private _http: HttpClient, private _httpS: HttpService) {

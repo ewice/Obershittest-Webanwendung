@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DragulaService } from 'ng2-dragula';
 import { ToDo, EventPing } from '../../_interface';
 import { HttpService } from '../../_services';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-template-todo-list',
@@ -10,12 +11,16 @@ import { HttpService } from '../../_services';
   styleUrls: ['./template-todo-list.component.sass']
 })
 export class TodoListComponent implements OnInit, OnDestroy {
-
+    @Input() active;
     public toDoDoneShow: boolean;
     public toDoShow: boolean;
     public $todos: ToDo[];
     public $todosdone: ToDo[];
     public subs = new Subscription();
+
+    colorTodo = new FormGroup({
+      bg: new FormControl()
+    });
 
     constructor(
       public _httpService: HttpService,
@@ -126,4 +131,6 @@ export class TodoListComponent implements OnInit, OnDestroy {
       }
     }
 
+
+    
 }

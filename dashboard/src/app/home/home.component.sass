@@ -21,13 +21,14 @@
             box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.20)
             border-radius: 3px
             transition: all 0.3s cubic-bezier(.25,.8,.25,1)
-            padding: 5px !important
             background-color: $light-grey
+            padding: 5px 5px 5px 5px !important
             overflow: scroll
-
             &:hover
                 box-shadow: 0 3px 40px rgba(0,0,0,0.3), 0 3px 30px rgba(0,0,0,0.3)
 
+.button-holder
+  height: 50%
 
 #logout
     background: $dark-grey
@@ -36,6 +37,8 @@
     a
         color: $light-grey
         font-weight: 500
+        margin-left: 20px
+        cursor: pointer
 
 
 
@@ -51,34 +54,8 @@ app-template-clock
     justify-content: center
     align-items: center
 
-
-.hamburger-box
-  width: 20px
-  height: 10px
+app-template-todo-list
+  width: 5000px
   position: relative
-  .hamburger-top, .hamburger-inner, .hamburger-down
-    width: 20px
-    height: 2px
-    background: #222222
-    position: absolute
-    border-radius: 10px
-    transition: 300ms
-  .hamburger-top
-    top: 0
-  .hamburger-inner
-    top: 4px
-  .hamburger-down
-    bottom: 0
-
-.active
-  .hamburger-top
-    transform: rotate(-45deg) scale(0.65, 1)
-    left: -6px
-.active
-  .hamburger-down
-    transform: rotate(45deg) scale(0.65, 1)
-    left: -6px
-
-
 
 
