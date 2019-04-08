@@ -5,44 +5,12 @@
   <title>Dashboard</title>
   <base href="/">
   <script src="https://apis.google.com/js/api.js"></script>
-  <script src="https://sdk.scdn.co/spotify-player.js"></script>
   <script src="https://apis.google.com/js/api.js" type="text/javascript"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
   <app-root></app-root>
-  <script>
-    window.onSpotifyWebPlaybackSDKReady = () => {
-      const token = 'BQBiB1-VdChfwCyI_qTVCbk17qH4O-inJJenvGzSYQEhKD-qkPyZjo6aW33EhcLAlQlf6JT-_L7Mni9R98mV3QKA6FxiPCV6ThQ34coW-ZN9PDWnTrHIRz21pD8PyE4k8zOxsmQFwi4oDHf0H0JThRI93wcoM4f6i0pHGCtN';
-      const player = new Spotify.Player({
-        name: 'Web Playback SDK Quick Start Player',
-        getOAuthToken: cb => { cb(token); }
-      });
-
-      // Error handling
-      player.addListener('initialization_error', ({ message }) => { console.error(message); });
-      player.addListener('authentication_error', ({ message }) => { console.error(message); });
-      player.addListener('account_error', ({ message }) => { console.error(message); });
-      player.addListener('playback_error', ({ message }) => { console.error(message); });
-
-      // Playback status updates
-      player.addListener('player_state_changed', state => { console.log(state); });
-
-      // Ready
-      player.addListener('ready', ({ device_id }) => {
-        console.log('Ready with Device ID', device_id);
-      });
-
-      // Not Ready
-      player.addListener('not_ready', ({ device_id }) => {
-        console.log('Device ID has gone offline', device_id);
-      });
-
-      // Connect to the player!
-      player.connect();
-    }
-  </script>
 
   </body>
 </html>
