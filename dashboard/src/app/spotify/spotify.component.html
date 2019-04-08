@@ -1,5 +1,5 @@
 <div *ngIf="anmelden==true">
-  <a (click)="authenticate()">
+  <a class="btn" (click)="authenticate()">
     Anmelden
   </a>
 </div>
@@ -7,17 +7,21 @@
   <div>
     <h2>Spotify</h2>
   </div>
-  <div>
-    <h3>{{track}}</h3>
-    <h3>{{artist}}</h3>
-  </div>
+
   <div>
     <img src="{{albumUrl}}">
   </div>
-  <div>
-    <button (click)="back()"><i class="fa fa-backward"></i></button>
-    <button (click)="togglePLay()" *ngIf="toggle"><i class="fa fa-play"></i></button>
-    <button (click)="togglePLay()" *ngIf="!toggle"><i class="fa fa-pause"></i></button>
-    <button (click)="next()"> <i class="fa fa-forward"></i></button>
+<div>
+  <div class="artistTitel">
+    <h3>{{track}}</h3>
+    <h3>{{artist}}</h3>
   </div>
+    <div class="buttons">
+      <button (click)="back()"><i class="fa fa-backward"></i></button>
+      <button (click)="togglePLay()" *ngIf="toggle"><i class="fa fa-play"></i></button>
+      <button (click)="togglePLay()" *ngIf="!toggle"><i class="fa fa-pause"></i></button>
+      <button (click)="next()"> <i class="fa fa-forward"></i></button>
+    </div>
+  </div>
+
 </div>
