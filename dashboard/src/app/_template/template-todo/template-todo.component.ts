@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ToDo, EventPing } from '../../_interface';
-import { HttpService } from '../../_services';
+import { ToDo, EventPing } from '../../_shared/_interface';
+import { HttpService } from '../../_shared/_services';
 
 @Component({
   selector: 'app-template-todo',

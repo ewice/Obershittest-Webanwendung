@@ -1,0 +1,7 @@
+<table class="table table-hover message-list">
+  <tbody>
+    <tr *ngFor="let message of messages">
+      <a href="{{ message.link }}" target="_blank"><td (click)="loadMessage(message.id)">{{ message.title }}</td></a>
+    </tr>
+  </tbody>
+</table>

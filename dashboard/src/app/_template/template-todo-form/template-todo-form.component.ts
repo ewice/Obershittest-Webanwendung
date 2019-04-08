@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ToDo } from '../../_interface';
+import { ToDo } from '../../_shared/_interface';
 
 @Component({
   selector: 'app-template-todo-form',

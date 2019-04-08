@@ -15,17 +15,14 @@
         <div class="button-holder">
           <div class="gridster-item-content" *ngIf="item.hasContent">
             <app-weather *ngIf="item.type == 'weather'"></app-weather>
-          </div>
-            <button mat-icon-button mat-raised-button class="remove-button" (mousedown)="removeItem($event, item)"
-                    (touchstart)="removeItem($event, item)">
-              <i class="fa fa-close"></i>
-            </button>
+            <app-channels *ngIf="item.type == 'channel-list'"></app-channels>
           </div>
           <label *ngIf="!item.hasContent">{{item.label}}</label>
-          <button mat-mini-fab *ngIf="!item.hasContent" (mousedown)="removeItem($event, item)"
+          <button mat-icon-button mat-raised-button class="remove-button" (mousedown)="removeItem($event, item)"
                   (touchstart)="removeItem($event, item)">
-           <i class="fa fa-close"></i>
+            <i class="fa fa-close"></i>
           </button>
+          </div>
       </gridster-item>
     </gridster>
     <!-- <app-template-clock></app-template-clock>

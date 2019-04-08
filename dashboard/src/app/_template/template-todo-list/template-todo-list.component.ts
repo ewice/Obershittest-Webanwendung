@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DragulaService } from 'ng2-dragula';
-import { ToDo, EventPing } from '../../_interface';
-import { HttpService } from '../../_services';
+import { ToDo, EventPing } from '../../_shared/_interface';
+import { HttpService } from '../../_shared/_services';
 
 @Component({
   selector: 'app-template-todo-list',

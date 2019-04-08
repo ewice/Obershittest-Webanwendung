@@ -12,7 +12,7 @@ import { CalendarComponent, ClockComponent, TemplateTodoComponent, TemplateTodoF
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DragulaModule } from 'ng2-dragula';
 
-import { HttpService, AuthService } from './_services';
+import { HttpService, AuthService } from './_shared/_services';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { GridsterModule } from 'angular-gridster2';

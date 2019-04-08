@@ -7,16 +7,15 @@ var cors = require('cors')
 
 
 const todoRoutes = require('./api/routes/todo');
+const channelRoutes = require('./api/routes/channel');
 const userRoutes = require('./api/routes/user');
 
-
-mongoose.connect("mongodb://localhost:27017/dhbw", {
+mongoose.connect("mongodb://localhost:27017/dashboard", {
     useCreateIndex: true,
     useNewUrlParser: true
 }).then(result => {
     console.log("connected");
 }
-    
     
 );
 app.use(cors());
@@ -35,8 +34,8 @@ app.use((req, res, next) => {
 });
  
 app.use('/todos', todoRoutes);
+app.use('/channels', channelRoutes);
 app.use('/users', userRoutes);
-
 
 app.use((req, res, next) => {
     const error = new Error('Not found');
