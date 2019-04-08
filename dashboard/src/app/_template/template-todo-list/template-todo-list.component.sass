@@ -18,21 +18,23 @@
     span
       font-size: $cube*1.5
   .list-open
-    position: absolute
+    position: relative
     bottom: 0
     left: 0
-    padding: $cube*2
+    margin-left: $cube
+    padding-top: $cube*2
   .list-closed
-    position: absolute
+    position: relative
     bottom: 0
     right: 0
-    padding: $cube*2
+    margin-left: $cube
+    padding-top: $cube*2
 
 h4:hover
   color: $dark-blue
 
 .todo-elements
-  width: 25vw
+  width: 98%
   margin: 0
   display: flex
   flex-flow: column

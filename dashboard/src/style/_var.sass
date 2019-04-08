@@ -12,62 +12,150 @@ $green: #086900
 $white: #ffffff
 
 
-// Padding & maring, Sizing
+//Grid background colors
+$background1: #F6A7A7
+$background2: #6CCECA
+$background3: #7FE7CC
+$background4: #F4DADA
+$background5: #C6CBEF
+$background6: #C5F8C8
+$background7: #FF9D76
+$background8: #FFE5AE
+$background9: #FFFEEC
+$background10: #EAEAEA
+$background11: #C6CFFF
+
+
+
+// Padding & marging, Sizing
 $cube: 1rem
+$bold: 400
 
 // Fonts
 $font: "Montserrat", sans-serif
 
 // Reset
 *
-  margin: 0
-  padding: 0
-  text-decoration: none
-  font-family: $font
+ margin: 0
+ padding: 0
+ text-decoration: none
+ font-family: $font
+
+
+// Headlines
+h1
+ font-size: 1.9*$cube !important
+ color: $light-grey !important
+ text-align: center
+
+h2
+  font-size: 1.7*$cube !important
+  color: $dark-grey !important
+  text-align: center
+  margin-bottom: 2*$cube
+
+h4
+ font-size: $cube !important
+ color: $grey !important
+
+
+.gridster-item
+  padding: $cube !important
+
+.gridster-item-content
+  margin-right: $cube
+  margin-left: $cube
+  position: relative
+
+.gridster-item-headline
+ background-color: $dark-grey
+ padding: 1.3*$cube
+ margin-bottom: 0.5*$cube
+ top: 0
+ width: 100%
+
+
+// Headlines
+h1
+  font-size: 1.9rem !important
+  color: $light-grey !important
+  text-align: center
+
+h4
+  font-size: 1rem !important
+  color: $grey !important
+
+
+.gridster-item-headline
+  background-color: $dark-grey
+  padding: 1.3rem
+  margin-bottom: 0.5rem
+  top: 0
+  width: 100%
 
 // Button
 .btn
-    display: inline-block
-    font-weight: 400
-    text-align: center
-    white-space: nowrap
-    vertical-align: middle
-    user-select: none
-    border: 1px solid transparent
-    padding: .5rem 1rem
-    font-size: $cube*1.8
-    line-height: 1.5
-    border-radius: .25rem
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
-    cursor: pointer
-    margin-top: $cube
+   display: inline-block
+   font-weight: 400
+   text-align: center
+   white-space: nowrap
+   vertical-align: middle
+   user-select: none
+   border: 1px solid transparent
+   padding: .5*$cube $cube
+   font-size: $cube*1.8
+   line-height: 1.5
+   border-radius: .25*$cube
+   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
+   cursor: pointer
+   margin-top: $cube
 
 .btn-green
-    background-color: $green
-    color: white
+   background-color: $green
+   color: white
 
 .btn-blue
-    background-color: $blue
-    color: $white
-    max-width: 130px
-    &:hover
-        background-color: $white
-        color: $blue
+   background-color: $blue
+   color: $white
+   max-width: 130px
+   &:hover
+       background-color: $white
+       color: $blue
 
 .btn-ghost
-    color: $blue
-    border: 1px solid $blue
-    text-decoration: none
-    margin-left: 20%
-    max-width: 130px
-    &:hover
-        background-color: $white
-        color: $blue
-        border: 1px solid transparent
+   color: $blue
+   border: 1px solid $blue
+   text-decoration: none
+   margin-left: 20%
+   max-width: 130px
+   &:hover
+       background-color: $white
+       color: $blue
+       border: 1px solid transparent
 
 button
-  background-color: transparent
-  border: none
-  i
-      color: $dark-grey
-      font-weight: bold
+ background-color: transparent
+ border: none
+ i
+     color: $dark-grey
+     font-weight: bold
+
+.btn-settings
+  background-color: $dark-grey
+  margin-top: $cube
+  margin-bottom: $cube
+  display: flex
+  justify-content: center
+  color: $light-grey
+  padding: $cube
+  text-align: center
+  width: 100%
+  position: absolute
+
+#checkbox
+  float: right
+  margin-left: $cube
+
+label
+  margin-top: $cube
+

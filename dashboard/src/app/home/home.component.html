@@ -3,20 +3,48 @@
     <gridster [options]="options">
         <gridster-item [item]="item" *ngFor="let item of dashboard">
           <div class="button-holder">
+            <button mat-icon-button mat-raised-button class="remove-button" (mousedown)="removeItem($event, item)"
+              (touchstart)="removeItem($event, item)">
+              <i class="fa fa-close"></i>
+            </button>
             <div class="gridster-item-content" *ngIf="item.hasContent">
+              <app-calendar *ngIf="item.type == 'calendar'" ></app-calendar>
               <app-weather *ngIf="item.type == 'weather'"></app-weather>
               <app-template-todo-list *ngIf="item.type == 'todo'"></app-template-todo-list>
+
+
+                <div class='container'  *ngIf="item.type == 'youtube'">
+                    <div class="page-header">
+                        <h2>YouTube
+                            <img style="float: right;" *ngIf="loading" src='assets/images/loading.gif' />
+                        </h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-group input-group-lg col-sm-8 col-md-8">
+                            <app-search-box (loading)="loading = $event" (results)="updateResults($event)"></app-search-box>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:20px">
+                        <p>{{message}}</p>
+                        <app-search-result *ngFor="let result of results" [result]="result"></app-search-result>
+                    </div>
+                </div>
+
+
             </div>
-              <button mat-icon-button mat-raised-button class="remove-button" (mousedown)="removeItem($event, item)"
-                      (touchstart)="removeItem($event, item)">
-                <i class="fa fa-close"></i>
-              </button>
             </div>
             <label *ngIf="!item.hasContent">{{item.label}}</label>
             <button mat-mini-fab *ngIf="!item.hasContent" (mousedown)="removeItem($event, item)"
                     (touchstart)="removeItem($event, item)">
              <i class="fa fa-close"></i>
             </button>
+                <div class="hamburger-box" (click)="toggleSettingsMenu()" [ngClass]="{'active': settingMenuIsActive}">
+                  <div class="hamburger-top"></div>
+                  <div class="hamburger-inner"></div>
+                  <div class="hamburger-down"></div>
+                </div>
         </gridster-item>
       </gridster>
     <!-- <app-template-clock></app-template-clock>
