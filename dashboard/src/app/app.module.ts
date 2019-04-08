@@ -26,6 +26,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 
 import { environment } from '../environments/environment';
+import { YoutubeComponent } from './youtube/youtube/youtube.component';
 
 
 
@@ -49,7 +50,8 @@ export function tokenGetter() {
     SpotifyComponent,
     SearchBoxComponent,
     SearchResultComponent,
-    CalendarComponent
+    CalendarComponent,
+    YoutubeComponent
   ],
   imports: [
     BrowserModule,

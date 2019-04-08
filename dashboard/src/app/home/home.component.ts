@@ -3,6 +3,8 @@
 import {CompactType, DisplayGrid, GridsterConfig, GridsterItem, GridType, GridsterItemComponentInterface} from 'angular-gridster2';
 import { VideoDetail } from '../youtube/video-detail.model';
 import { HttpService } from '../_services';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ColorsService } from '../_services/colors.service';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +18,12 @@ export class HomeComponent implements OnInit {
   loading: boolean;
   message = '';
   settingMenuIsActive = false;
+  selectedColor: String;
+  color = new FormGroup({
+    colorInput: new FormControl('')
+  });
+  active: Boolean;
+
   static itemChange(item, itemComponent) {
     console.log('itemChanged');
   }
@@ -26,7 +34,7 @@ export class HomeComponent implements OnInit {
   private eventStop(item: GridsterItem, itemComponent: GridsterItemComponentInterface, event: MouseEvent) {
   }
 
-  constructor(private _http: HttpService) {
+  constructor(private _http: HttpService, public _colorService: ColorsService) {
     console.log("test");
 
     this.options = {
@@ -156,7 +164,15 @@ export class HomeComponent implements OnInit {
   }
 
   toggleSettingsMenu() {
-    this.settingMenuIsActive = !this.settingMenuIsActive;
+    this.active = !this.active;
+  }
+
+  onSubmit(item: GridsterItem, color?) {
+    console.log(this.selectedColor);
+
+    item['bg'] = this.selectedColor;
+    console.log(item);
+
   }
 
 }

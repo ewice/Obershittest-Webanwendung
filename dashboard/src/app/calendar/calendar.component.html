@@ -1,5 +1,5 @@
-<ngx-flip [flip]="flipDiv" (click)="flip()">
-  <div front>
+
+  <div class="front" >
     <div *ngIf="auth.user$ | async as user">
       <h3>Logged in as {{ user.displayName }}</h3>
       <img src="{{ user.photoURL }}" width="50px">
@@ -16,13 +16,9 @@
         <p>{{ item.description }}</p>
       </div>
     </div>
-    <button (click)="auth.login()">Login with Google</button>
+    <div *ngIf="!auth.user$._isScalare">
+        <button (click)="auth.login()">Login with Google</button>
+      </div>
   </div>
-  <div back>
-      <h3>Logged in as </h3>
-      <img src="" width="50px">
-    <button (click)="auth.login()">Login with Google</button>
-  </div>
-  <button (click)="flip()">Fliperrrrrrrei</button>
-</ngx-flip>
+
 

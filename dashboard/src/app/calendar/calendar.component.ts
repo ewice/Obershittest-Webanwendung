@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthFirebaseService } from '../_services/auth-firebase.service';
+import { ACTIVE_INDEX } from '@angular/core/src/render3/interfaces/container';
 
 @Component({
   selector: 'app-calendar',
@@ -9,12 +10,10 @@ import { AuthFirebaseService } from '../_services/auth-firebase.service';
 export class CalendarComponent implements OnInit {
 
   constructor(private auth: AuthFirebaseService) {
+    console.log(auth.user$);
+
    }
 
-  flipDiv: boolean
-   flip(){
-     this.flipDiv = !this.flipDiv;
-   }
   ngOnInit() {
   }
 
