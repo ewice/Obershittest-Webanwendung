@@ -14,9 +14,7 @@ import { ColorsService } from '../_services/colors.service';
 export class HomeComponent implements OnInit {
   options: GridsterConfig;
   dashboard: Array<GridsterItem>;
-  results: VideoDetail[];
-  loading: boolean;
-  message = '';
+
   settingMenuIsActive = false;
   selectedColor: String;
   color = new FormGroup({
@@ -154,14 +152,7 @@ export class HomeComponent implements OnInit {
     this.dashboard.push({x: 0, y: 0, cols: 1, rows: 1});
   }
 
-  updateResults(results: VideoDetail[]): void {
-    this.results = results;
-    if (this.results.length === 0) {
-      this.message = 'Not found...';
-    } else {
-      this.message = 'Top 10 results:';
-    }
-  }
+
 
   toggleSettingsMenu() {
     this.active = !this.active;
