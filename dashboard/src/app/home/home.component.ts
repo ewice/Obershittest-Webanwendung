@@ -92,6 +92,19 @@ export class HomeComponent implements OnInit {
       scrollToNewItems: false
    };
 
+   this.dashboard = [
+    {cols: 2, rows: 1, y: 0, x: 0, hasContent: true, type: 'weather'},
+    {cols: 2, rows: 2, y: 0, x: 2, hasContent: true, type: 'todo'},
+    {cols: 1, rows: 2, y: 0, x: 4, hasContent: true, type: 'spotify'},
+    {cols: 1, rows: 1, y: 2, x: 5},
+    {cols: 1, rows: 1, y: 1, x: 0},
+    {cols: 1, rows: 1, y: 1, x: 0},
+    {cols: 2, rows: 2, y: 3, x: 5, minItemRows: 2, minItemCols: 2, label: 'Min rows & cols = 2'},
+    {cols: 2, rows: 2, y: 2, x: 0, maxItemRows: 2, maxItemCols: 2, label: 'Max rows & cols = 2'},
+    {cols: 2, rows: 1, y: 2, x: 2, dragEnabled: true, resizeEnabled: true, label: 'Drag&Resize Enabled'},
+    {cols: 1, rows: 1, y: 2, x: 4, dragEnabled: true, resizeEnabled: false, label: 'Drag&Resize Disabled'},
+    {cols: 1, rows: 1, y: 2, x: 6}
+  ];
     this._http.getDashboardPositions().subscribe(data => {
         console.log(data);
 
