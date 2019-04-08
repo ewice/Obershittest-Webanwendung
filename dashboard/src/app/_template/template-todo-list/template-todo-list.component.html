@@ -1,13 +1,13 @@
 <div class="list-view">
+  <app-template-todo-form (ping)="create($event)"></app-template-todo-form>
   <div class="list-open">
-    <h4 (click)="toDoShow=!toDoShow">Offen <span>( {{ $todos.length }} )</span></h4>
+    <h2 (click)="toDoShow=!toDoShow">Offen <span>( {{ $todos.length }} )</span></h2>
     <div dragula="todos" [dragulaModel]="$todos" (dragulaModelChange)="$todos = $event" *ngIf="toDoShow" class="todo-elements">
       <app-template-todo (ping)="update($event)" [toDo$]="toDo" *ngFor="let toDo of $todos"></app-template-todo>
     </div>
-    <app-template-todo-form (ping)="create($event)"></app-template-todo-form>
   </div>
   <div class="list-closed">
-    <h4 (click)="toDoDoneShow=!toDoDoneShow">Erledigt <span>( {{ $todosdone.length }} )</span></h4>
+    <h2 (click)="toDoDoneShow=!toDoDoneShow">Erledigt <span>( {{ $todosdone.length }} )</span></h2>
     <div *ngIf="toDoDoneShow" class="todo-elements">
       <app-template-todo (ping)="update($event)" [toDo$]="toDo" *ngFor="let toDo of $todosdone"></app-template-todo>
     </div>

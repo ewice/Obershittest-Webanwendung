@@ -1,6 +1,8 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 
-import {CompactType, DisplayGrid, GridsterConfig, GridsterItem, GridType} from 'angular-gridster2';
+import {CompactType, DisplayGrid, GridsterConfig, GridsterItem, GridType, GridsterItemComponentInterface} from 'angular-gridster2';
+import { VideoDetail } from '../youtube/video-detail.model';
+import { HttpService } from '../_services';
 
 @Component({
   selector: 'app-home',
@@ -10,20 +12,23 @@ import {CompactType, DisplayGrid, GridsterConfig, GridsterItem, GridType} from '
 export class HomeComponent implements OnInit {
   options: GridsterConfig;
   dashboard: Array<GridsterItem>;
+  results: VideoDetail[];
+  loading: boolean;
+  message = '';
+  settingMenuIsActive = false;
   static itemChange(item, itemComponent) {
-    console.log('itemChanged', item, itemComponent);
+    console.log('itemChanged');
   }
 
   static itemResize(item, itemComponent) {
     console.log('itemResized', item, itemComponent);
   }
-  constructor() {}
-  logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userId');
+  private eventStop(item: GridsterItem, itemComponent: GridsterItemComponentInterface, event: MouseEvent) {
   }
 
-   ngOnInit() {
+  constructor(private _http: HttpService) {
+    console.log("test");
+
     this.options = {
       gridType: GridType.Fit,
       compactType: CompactType.CompactLeftAndUp,
@@ -60,13 +65,14 @@ export class HomeComponent implements OnInit {
       emptyCellDragMaxCols: 50,
       emptyCellDragMaxRows: 50,
       ignoreMarginInRow: false,
-      draggable: {
-        enabled: true,
-      },
       resizable: {
         enabled: true,
       },
       swap: true,
+      draggable: {
+        enabled: true,
+        stop: this.savePositions.bind(this)
+      },
       pushItems: true,
       disablePushOnDrag: false,
       disablePushOnResize: false,
@@ -91,11 +97,35 @@ export class HomeComponent implements OnInit {
     {cols: 1, rows: 1, y: 2, x: 4, dragEnabled: true, resizeEnabled: false, label: 'Drag&Resize Disabled'},
     {cols: 1, rows: 1, y: 2, x: 6}
   ];
+    this._http.getDashboardPositions().subscribe(data => {
+        console.log(data);
+
+        if(data["docs"] != null) {
+          this.dashboard = data["docs"].dashboard
+          console.log(this.dashboard);
+
+        }
+        else {
+          this.dashboard = data["doc"].dashboard
+        }
+
+    });
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+  }
+
+   ngOnInit() {
+
   }
 
   changedOptions() {
     if (this.options.api && this.options.api.optionsChanged) {
       this.options.api.optionsChanged();
+      console.log("changed");
+
     }
   }
 
@@ -103,9 +133,30 @@ export class HomeComponent implements OnInit {
     $event.preventDefault();
     $event.stopPropagation();
     this.dashboard.splice(this.dashboard.indexOf(item), 1);
-  }
+    console.log("removed");
 
+  }
+  savePositions(item: GridsterItem, itemComponent: GridsterItemComponentInterface, event: MouseEvent) {
+    setTimeout( () => this._http.sendDashboardPositions(this.dashboard), 250 );
+
+    console.log(this.dashboard);
+
+  }
   addItem() {
     this.dashboard.push({x: 0, y: 0, cols: 1, rows: 1});
   }
+
+  updateResults(results: VideoDetail[]): void {
+    this.results = results;
+    if (this.results.length === 0) {
+      this.message = 'Not found...';
+    } else {
+      this.message = 'Top 10 results:';
+    }
+  }
+
+  toggleSettingsMenu() {
+    this.settingMenuIsActive = !this.settingMenuIsActive;
+  }
+
 }

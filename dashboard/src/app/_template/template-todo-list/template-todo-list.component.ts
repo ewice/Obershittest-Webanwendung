@@ -27,7 +27,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
         this.$todosdone = [];
         this.loadData();
 
-        this._dragulaService.createGroup('todos', {
+        this._dragulaService.createGroup('todos' + Math.random(), {
           removeOnSpill: false,
           moves: function (el, container, handle) {
               return handle.className === 'handle';
@@ -75,7 +75,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
           return obj1.position - obj2.position;
         });
       }, error => {
-          console.log(`%cERROR: ${error.message}`, `color: red; font-size: 12px;`);
+          console.log(`%cERROR: ${error.message}`, `color: green; font-size: 12px;`);
       });
     }
 

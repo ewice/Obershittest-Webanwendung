@@ -8,6 +8,8 @@ var cors = require('cors')
 
 const todoRoutes = require('./api/routes/todo');
 const userRoutes = require('./api/routes/user');
+const weatherRoutes = require('./api/routes/weather');
+const dashboardPositionRoutes = require('./api/routes/dashboardPosition');
 
 
 mongoose.connect("mongodb://localhost:27017/dhbw", {
@@ -36,6 +38,8 @@ app.use((req, res, next) => {
  
 app.use('/todos', todoRoutes);
 app.use('/users', userRoutes);
+app.use('/weather', weatherRoutes)
+app.use('/dashboardPositons', dashboardPositionRoutes)
 
 
 app.use((req, res, next) => {
