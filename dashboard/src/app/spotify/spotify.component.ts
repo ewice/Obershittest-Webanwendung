@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router, Params } from "@angular/router";
 import { timeout } from 'rxjs/operators';
+import { getToken } from '@angular/router/src/utils/preactivation';
 
 @Component({
   selector: 'app-spotify',
@@ -12,9 +13,11 @@ import { timeout } from 'rxjs/operators';
 export class SpotifyComponent implements OnInit {
 
   toggle = true;
+  anmelden = true;
   artist: String = '';
   track: String;
   albumUrl: String = '';
+  token: String;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,19 +28,22 @@ export class SpotifyComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getTrackInfo();
+    setTimeout(() => this.getTrackInfo(), 1000);
+    this.getToken();
+    this.isTokenUndefined();
+
   }
   togglePLay() {
 
     this.getTrackInfo();
     if (this.toggle === true) {
       this.play();
-      this.toggle = !this.toggle;
+      this.toggle = false;
 
 
     } else if (this.toggle === false) {
       this.pause();
-      this.toggle = !this.toggle;
+      this.toggle = true;
 
 
     }
@@ -45,13 +51,11 @@ export class SpotifyComponent implements OnInit {
 
 
   play() {
-
-    let token: String;
     this.route.fragment.subscribe(fragment => {
-      token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
+      this.token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
       const httpOptions = {
         headers: new HttpHeaders({
-          'Authorization': 'Bearer ' + token
+          'Authorization': 'Bearer ' + this.token
         })
       };
 
@@ -112,12 +116,20 @@ export class SpotifyComponent implements OnInit {
           }
         );
     });
+    console.log(this.toggle);
+
     this.toggle = true;
+    console.log(this.toggle);
     this.track = "";
     this.artist = "";
     setTimeout(() => this.getTrackInfo(), 1000);
   }
+getToken(){
+  this.route.fragment.subscribe(fragment => {
+    this.token = fragment.substring(fragment.indexOf('access_token=') + 13, fragment.indexOf('&', 0));
 
+});
+}
   back() {
     let token: String;
     this.route.fragment.subscribe(fragment => {
@@ -181,4 +193,18 @@ export class SpotifyComponent implements OnInit {
         );
     });
   }
+  authenticate(){
+    window.location.href="https://accounts.spotify.com/authorize?client_id=05cd27ba45954604967db28cfd533e0d&redirect_uri=http://localhost:4200/&scope=user-read-private%20user-read-email%20user-modify-playback-state%20user-read-currently-playing%20user-read-playback-state&response_type=token&state=123"
+  }
+  isTokenUndefined(){
+    console.log(this.token);
+
+    if(this.token === undefined)
+    {
+      this.anmelden = true;
+    }else {
+      this.anmelden = false;
+    }
+  }
+
 }

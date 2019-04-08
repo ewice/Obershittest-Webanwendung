@@ -1,19 +1,27 @@
+<div *ngIf="anmelden==true">
+  <a class="btn" (click)="authenticate()">
+    Anmelden
+  </a>
+</div>
+<div *ngIf="anmelden==false">
   <div>
-  <h2 >Spotify</h2>
-</div>
+    <h2>Spotify</h2>
+  </div>
+
   <div>
-  <h3 >{{track}}</h3>
-  <h3>{{artist}}</h3>
-</div>
+    <img src="{{albumUrl}}">
+  </div>
 <div>
-  <img src="{{albumUrl}}">
-</div>
-<div>
- <a href="https://accounts.spotify.com/authorize?client_id=05cd27ba45954604967db28cfd533e0d&redirect_uri=http://localhost:4200/&scope=user-read-private%20user-read-email%20user-modify-playback-state%20user-read-currently-playing%20user-read-playback-state&response_type=token&state=123">KLick me</a>
-</div>
- <div>
-<button  (click)="back()"  ><i class="fa fa-backward"></i></button>
-<button (click)="togglePLay()" *ngIf="toggle"><i class="fa fa-play"></i></button>
-<button  (click)="togglePLay()" *ngIf="!toggle" ><i class="fa fa-pause"></i></button>
-<button  (click)="next()">  <i class="fa fa-forward"></i></button>
+  <div class="artistTitel">
+    <h3>{{track}}</h3>
+    <h3>{{artist}}</h3>
+  </div>
+    <div class="buttons">
+      <button (click)="back()"><i class="fa fa-backward"></i></button>
+      <button (click)="togglePLay()" *ngIf="toggle"><i class="fa fa-play"></i></button>
+      <button (click)="togglePLay()" *ngIf="!toggle"><i class="fa fa-pause"></i></button>
+      <button (click)="next()"> <i class="fa fa-forward"></i></button>
+    </div>
+  </div>
+
 </div>
