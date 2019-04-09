@@ -97,8 +97,8 @@ export class WeatherService {
           iconSrc: 'http://openweathermap.org/img/w/' + res['weather'][0].icon + '.png'
         };
         console.log(res);
-        this.error=false;
-      },error => this.error = true);
+        this.error = false;
+      }, error => this.error = true);
     }
   }
 }

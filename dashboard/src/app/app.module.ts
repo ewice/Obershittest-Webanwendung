@@ -54,7 +54,6 @@ export function tokenGetter() {
     SpotifyComponent,
     SearchBoxComponent,
     SearchResultComponent,
-    CalendarComponent,
     YoutubeComponent
   ],
   imports: [
