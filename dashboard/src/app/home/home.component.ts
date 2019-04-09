@@ -5,6 +5,8 @@ import { VideoDetail } from '../youtube/video-detail.model';
 import { HttpService } from '../_services';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ColorsService } from '../_services/colors.service';
+import { WeatherService } from '../_services/weather.service';
+import { AuthFirebaseService } from '../_services/auth-firebase.service';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +24,7 @@ export class HomeComponent implements OnInit {
   });
   active: Boolean;
 
+
   static itemChange(item, itemComponent) {
     console.log('itemChanged');
   }
@@ -32,7 +35,7 @@ export class HomeComponent implements OnInit {
   private eventStop(item: GridsterItem, itemComponent: GridsterItemComponentInterface, event: MouseEvent) {
   }
 
-  constructor(private _http: HttpService, public _colorService: ColorsService) {
+  constructor(private _http: HttpService, public _colorService: ColorsService, private _weather: WeatherService, private auth: AuthFirebaseService) {
     console.log("test");
 
     this.options = {

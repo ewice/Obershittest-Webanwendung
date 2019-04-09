@@ -21,6 +21,48 @@
 
             <section class="settings" back>
 
+                <form [formGroup]="_weather.weatherSettings" (ngSubmit)="onSubmit()" *ngIf="item.type =='weather'">
+                    <label>
+                      PLZ:
+                      <input type="text" formControlName="zip" id="plzInputField">
+                    </label>
+                    <br>
+                    <label>
+                      Standort automatisch setzen?
+                      <input id="checkbox" type="checkbox" formControlName="automaticLocation">
+                    </label>
+                    <br>
+                    <button class="btn-settings" type="submit" [disabled]="!_weather.weatherSettings.valid">Suchen</button>
+                  </form>
+                  <form [formGroup]="auth.eventForm" (ngSubmit)="auth.onSubmit()" *ngIf="item.type =='calendar'">
+                      <label>
+                        Titel:
+                        <input type="text" formControlName="summary" id="summary">
+                      </label>
+                      <br>
+                      <label>
+                          Beschreibung:
+                          <input type="text" formControlName="desc" id="desc">
+                        </label>
+                      <br>
+                      <label>
+                           Start Datum (YYYY-MM-TT):
+                          <input type="text" formControlName="start" id="start">
+                        </label>
+                        <label>
+                            Start Zeit (HH:MM):
+                           <input type="text" formControlName="startTime" id="startTime">
+                         </label>
+                         <label>
+                            End Datum (YYYY-MM-TT):
+                           <input type="text" formControlName="end" id="end">
+                         </label>
+                         <label>
+                             End Zeit (HH:MM):
+                            <input type="text" formControlName="endTime" id="endTime">
+                          </label>
+                      <button class="btn-settings" type="submit" [disabled]="!auth.eventForm.valid">Suchen</button>
+                    </form>
                   <label>
                       Farbe:
                     </label>
