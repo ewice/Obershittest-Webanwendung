@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DragulaService } from 'ng2-dragula';
 import { ToDo, EventPing } from '../../_interface';
-import { HttpService } from '../../_services';
+import { HttpService } from '../../_services/http.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({

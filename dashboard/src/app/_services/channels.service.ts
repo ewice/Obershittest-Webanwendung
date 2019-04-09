@@ -1,5 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core';
-import { Channel } from '../_interface/channel';
+import { Injectable } from '@angular/core';
 import { HttpService } from '../_services/http.service';
 import { BehaviorSubject } from 'rxjs';
 

@@ -1,8 +1,7 @@
-﻿import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 
-import {CompactType, DisplayGrid, GridsterConfig, GridsterItem, GridType, GridsterItemComponentInterface} from 'angular-gridster2';
-import { VideoDetail } from '../youtube/video-detail.model';
-import { HttpService } from '../_services';
+import { CompactType, DisplayGrid, GridsterConfig, GridsterItem, GridType, GridsterItemComponentInterface } from 'angular-gridster2';
+import { HttpService } from '../_services/http.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ColorsService } from '../_services/colors.service';
 import { WeatherService } from '../_services/weather.service';
@@ -19,7 +18,7 @@ export class HomeComponent implements OnInit {
   dashboard: Array<GridsterItem>;
   calendar: Boolean = true;
   youtube: Boolean = true;
-  rss: Boolean = true;
+  channel: Boolean = true;
   todo: Boolean = true;
   spotify: Boolean = true;
   weather: Boolean = true;
@@ -108,14 +107,8 @@ export class HomeComponent implements OnInit {
     {cols: 2, rows: 1, y: 0, x: 0, hasContent: true, type: 'weather'},
     {cols: 2, rows: 2, y: 0, x: 2, hasContent: true, type: 'todo'},
     {cols: 1, rows: 2, y: 0, x: 4, hasContent: true, type: 'spotify'},
-    {cols: 1, rows: 1, y: 2, x: 5},
-    {cols: 1, rows: 1, y: 1, x: 0},
-    {cols: 1, rows: 1, y: 1, x: 0},
-    {cols: 2, rows: 2, y: 3, x: 5, minItemRows: 2, minItemCols: 2, label: 'Min rows & cols = 2'},
-    {cols: 2, rows: 2, y: 2, x: 0, maxItemRows: 2, maxItemCols: 2, label: 'Max rows & cols = 2'},
-    {cols: 2, rows: 1, y: 2, x: 2, dragEnabled: true, resizeEnabled: true, label: 'Drag&Resize Enabled'},
-    {cols: 1, rows: 1, y: 2, x: 4, dragEnabled: true, resizeEnabled: false, label: 'Drag&Resize Disabled'},
-    {cols: 1, rows: 1, y: 2, x: 6}
+    {cols: 1, rows: 1, y: 2, x: 5, hasContent: true, type: 'channel'},
+    {cols: 1, rows: 1, y: 2, x: 5, hasContent: true, type: 'calendar'}
   ];
     this._http.getDashboardPositions().subscribe(data => {
         console.log(data);
@@ -130,8 +123,8 @@ export class HomeComponent implements OnInit {
         this.dashboard.forEach(element => {
           if (element.type === 'spotify') {
             this.spotify = false;
-          } else if (element.type === 'rss') {
-            this.rss = false;
+          } else if (element.type === 'channel') {
+            this.channel = false;
           } else if (element.type === 'calendar') {
             this.calendar = false;
           } else if (element.type === 'weather') {
@@ -168,8 +161,8 @@ export class HomeComponent implements OnInit {
     this.dashboard.splice(this.dashboard.indexOf(item), 1);
     if (item.type === 'spotify') {
       this.spotify = true;
-    } else if (item.type === 'rss') {
-      this.rss = true;
+    } else if (item.type === 'channel') {
+      this.channel = true;
     } else if (item.type === 'calendar') {
       this.calendar = true;
     } else if (item.type === 'weather') {

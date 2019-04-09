@@ -1,11 +1,12 @@
-import { HttpClient, HttpHeaders, HttpUrlEncodingCodec } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { GridsterItem } from 'angular-gridster2';
 
 import { User, ToDo, Channel, Wettersettings, DashboardPositions } from '../_interface';
-import { AuthService, Rss2jsonService  } from '../_services';
+import { AuthService } from '../_services/auth.service';
+import { Rss2jsonService  } from '../_services/rss2json.service';
 
 @Injectable({
   providedIn: 'root'

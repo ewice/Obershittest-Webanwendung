@@ -1,20 +1,15 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Wettersettings } from '../_interface/wettersettings';
-import {
-  HttpClient,
-  HttpHeaders
-} from '@angular/common/http';
-import {
-  HttpService
-} from '../_services';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpService } from '../_services/http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
 
-  apiKey = "ea618f9320a674d69a89eda628786e04";
+  apiKey = 'ea618f9320a674d69a89eda628786e04';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json ; charset=UTF-8'
@@ -25,14 +20,14 @@ export class WeatherService {
     lon: 0
   };
   wetter = {
-    location: "normal",
+    location: 'normal',
     temp: 234,
-    iconSrc: ""
+    iconSrc: ''
   };
   loadedWetterSettings: Wettersettings = {
     automaticLocation: null,
     zip: null,
-    userId: localStorage.getItem("userId")
+    userId: localStorage.getItem('userId')
   };
 
   weatherSettings = new FormGroup({
@@ -44,8 +39,8 @@ export class WeatherService {
 
   constructor(private _http: HttpClient, private _httpS: HttpService, private _weather: WeatherService) {
     _httpS.getWeatherSettings().subscribe(data => {
-      this.loadedWetterSettings.automaticLocation = data["doc"].automaticLocation;
-      this.loadedWetterSettings.zip = data["doc"].zip;
+      this.loadedWetterSettings.automaticLocation = data['doc'].automaticLocation;
+      this.loadedWetterSettings.zip = data['doc'].zip;
       console.log(this.loadedWetterSettings);
       this.weatherSettings.patchValue({
         zip: this.loadedWetterSettings.zip
@@ -64,7 +59,7 @@ export class WeatherService {
     });
   }
 
-  onSubmit(){
+  onSubmit() {
     const weathersettings: Wettersettings = {
       zip: this.weatherSettings.value.zip,
       userId: localStorage.getItem('userId'),
@@ -81,20 +76,22 @@ export class WeatherService {
       }
   }
 
-  loadWheater(city ? : string, long ? : string, lat ? : string, zip ? : string) {
-    if (this.loadedWetterSettings.automaticLocation == true) {
-      this._http.get("http://api.openweathermap.org/data/2.5/weather?appid=ea618f9320a674d69a89eda628786e04&lat=" + city + "&lon=" + long).subscribe(res => {
+  loadWheater(city ?: string, long ?: string, lat ?: string, zip ?: string) {
+    if (this.loadedWetterSettings.automaticLocation === true) {
+      this._http.get('http://api.openweathermap.org/data/2.5/weather?appid=ea618f9320a674d69a89eda628786e04&lat=' + city + '&lon=' + long)
+      .subscribe(res => {
         this.wetter = {
-          temp: Math.round(res["main"].temp - 273.15),
+          temp: Math.round(res['main'].temp - 273.15),
           location: res['name'],
           iconSrc: 'http://openweathermap.org/img/w/' + res['weather'][0].icon + '.png'
         };
         console.log(res);
       });
-    } else if (this.loadedWetterSettings.automaticLocation == false) {
-      this._http.get("http://api.openweathermap.org/data/2.5/weather?appid=ea618f9320a674d69a89eda628786e04&zip=" + city + ",de").subscribe(res => {
+    } else if (this.loadedWetterSettings.automaticLocation === false) {
+      this._http.get('http://api.openweathermap.org/data/2.5/weather?appid=ea618f9320a674d69a89eda628786e04&zip=' + city + ',de')
+      .subscribe(res => {
         this.wetter = {
-          temp: Math.round(res["main"].temp - 273.15),
+          temp: Math.round(res['main'].temp - 273.15),
           location: res['name'],
           iconSrc: 'http://openweathermap.org/img/w/' + res['weather'][0].icon + '.png'
         };

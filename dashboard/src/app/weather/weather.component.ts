@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpService } from '../_services';
+import { HttpService } from '../_services/http.service';
 import { Wettersettings } from '../_interface/wettersettings';
 import { WeatherService } from '../_services/weather.service';
 

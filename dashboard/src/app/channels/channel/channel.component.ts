@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ChannelsService, MessagesService, HttpService } from '../../../_services/index';
-import { Channel } from '../../../_interface/index';
+import { ChannelsService, MessagesService } from '../../_services';
+import { Channel } from '../../_interface/index';
 
 @Component({
   selector: 'app-channel',
