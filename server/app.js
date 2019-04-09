@@ -3,7 +3,8 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-var cors = require('cors')
+var cors = require('cors');
+const expressSanitizer = require('express-sanitizer');
 
 
 const todoRoutes = require('./api/routes/todo');
@@ -25,6 +26,7 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(expressSanitizer());
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
