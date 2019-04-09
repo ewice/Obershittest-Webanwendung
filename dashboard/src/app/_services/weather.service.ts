@@ -13,7 +13,7 @@ import {
   providedIn: 'root'
 })
 export class WeatherService {
-
+  error=false;
   apiKey = "ea618f9320a674d69a89eda628786e04";
   httpOptions = {
     headers: new HttpHeaders({
@@ -43,6 +43,7 @@ export class WeatherService {
 
 
   constructor(private _http: HttpClient, private _httpS: HttpService, private _weather: WeatherService) {
+
     _httpS.getWeatherSettings().subscribe(data => {
       this.loadedWetterSettings.automaticLocation = data["doc"].automaticLocation;
       this.loadedWetterSettings.zip = data["doc"].zip;
@@ -99,7 +100,8 @@ export class WeatherService {
           iconSrc: 'http://openweathermap.org/img/w/' + res['weather'][0].icon + '.png'
         };
         console.log(res);
-      });
+        this.error=false;
+      },error => this.error = true);
     }
   }
 }

@@ -33,6 +33,8 @@
                     </label>
                     <br>
                     <button class="btn-settings" type="submit" [disabled]="!_weather.weatherSettings.valid">Suchen</button>
+                    <section id="alarm" *ngIf="_weather.error==true">falsche Postleitzahl</section>
+
                   </form>
                   <form [formGroup]="auth.eventForm" (ngSubmit)="auth.onSubmit()" *ngIf="item.type =='calendar'">
                       <label>
