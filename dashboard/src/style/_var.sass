@@ -51,7 +51,7 @@ h1
 h2
   font-size: 1.7*$cube !important
   color: $dark-grey !important
-  text-align: center
+  text-align: lesft
   margin-bottom: 2*$cube
 
 h4
@@ -142,16 +142,14 @@ label
 #checkbox
   float: right
   margin-left: $cube
-  position: absolute
-  top: 0
-  left: 0
+
   height: 20px
   width: 20px
   background-color: #eee
 
 
 /* On mouse-over, add a grey background color */
-.container:hover input ~ #checkbox
+#checkbox:hover input
   background-color: #ccc
 
 
@@ -184,3 +182,8 @@ label
   -ms-transform: rotate(45deg)
   transform: rotate(45deg)
 
+  #logoutButton
+    border: 5px solid $white
+    border-radius: 2px
+    padding: 5px 11px
+    background-color: $grey

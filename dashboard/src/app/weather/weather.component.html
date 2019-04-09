@@ -1,14 +1,14 @@
 <section>
-<span id="temperatur">
-  {{_weather.wetter.temp}} &deg;C
-</span>
-<img src="{{ _weather.wetter.iconSrc }}" alt="" srcset="">
-<br>
 <h2>
-  Wetter in: {{_weather.wetter.location}}
+  Wetter
 </h2>
+<p id="temperatur">
+  {{_weather.wetter.temp}} &deg;C
+</p>
+<img src="{{ _weather.wetter.iconSrc }}" alt="" srcset="">
+<section id="wetter">
+  {{_weather.wetter.location}}
 </section>
 <section class="settings">
-
 </section>
 
