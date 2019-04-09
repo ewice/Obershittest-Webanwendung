@@ -118,8 +118,7 @@ export class SpotifyComponent implements OnInit {
     });
     console.log(this.toggle);
 
-    this.toggle = true;
-    console.log(this.toggle);
+    this.toggle = false;
     this.track = "";
     this.artist = "";
     setTimeout(() => this.getTrackInfo(), 1000);
@@ -154,7 +153,7 @@ getToken(){
         );
     });
 
-    this.toggle = true;
+    this.toggle = false;
     this.track = '';
     this.artist = '';
     setTimeout(() => this.getTrackInfo(), 1000);
