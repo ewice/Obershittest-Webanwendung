@@ -16,6 +16,13 @@ import { AuthFirebaseService } from '../_services/auth-firebase.service';
 export class HomeComponent implements OnInit {
   options: GridsterConfig;
   dashboard: Array<GridsterItem>;
+  calendar: boolean = true;
+  youtube: boolean = true;
+  rss: boolean = true;
+  todo: boolean = true;
+  spotify: boolean = true;
+  weather: boolean = true;
+
 
   settingMenuIsActive = false;
   selectedColor: String;
@@ -41,7 +48,7 @@ export class HomeComponent implements OnInit {
     this.options = {
       gridType: GridType.Fit,
       compactType: CompactType.CompactLeftAndUp,
-      margin: 10,
+      margin: 30,
       outerMargin: true,
       outerMarginTop: null,
       outerMarginRight: null,
@@ -117,7 +124,21 @@ export class HomeComponent implements OnInit {
         else {
           this.dashboard = data["doc"].dashboard
         }
-
+        this.dashboard.forEach(element => {
+          if (element.type === 'spotify') {
+            this.spotify = false;
+          } else if(element.type === 'rss') {
+            this.rss = false;
+          } else if(element.type === 'calendar') {
+            this.calendar = false;
+          } else if(element.type === 'weather') {
+            this.weather = false;
+          } else if(element.type === 'youtube') {
+            this.youtube = false;
+          } else if(element.type === 'todo') {
+            this.todo = false;
+          }
+        });
     });
   }
 
@@ -142,8 +163,19 @@ export class HomeComponent implements OnInit {
     $event.preventDefault();
     $event.stopPropagation();
     this.dashboard.splice(this.dashboard.indexOf(item), 1);
-    console.log("removed");
-
+    if (item.type === 'spotify') {
+      this.spotify = true;
+    } else if(item.type === 'rss') {
+      this.rss = true;
+    } else if(item.type === 'calendar') {
+      this.calendar = true;
+    } else if(item.type === 'weather') {
+      this.weather = true;
+    } else if(item.type === 'youtube') {
+      this.youtube = true;
+    } else if(item.type === 'todo') {
+      this.todo = true;
+    }
   }
   savePositions(item: GridsterItem, itemComponent: GridsterItemComponentInterface, event: MouseEvent) {
     setTimeout( () => this._http.sendDashboardPositions(this.dashboard), 250 );
@@ -166,6 +198,30 @@ export class HomeComponent implements OnInit {
 
     item['bg'] = this.selectedColor;
     console.log(item);
+
+  }
+
+  addComponent(component: string){
+    let isExisting = false;
+    this.dashboard.forEach(element => {
+      if (element.type === component) {
+        console.log("Component besteht bereits");
+        isExisting = true;
+      }
+    });
+
+    setTimeout( () => {
+      if(!isExisting){
+        this.dashboard.push({
+          x: 3,
+          y: 3,
+          cols: 1,
+          rows: 1,
+          type: component,
+          hasContent: true
+        })
+      }
+    }, 250 );
 
   }
 
