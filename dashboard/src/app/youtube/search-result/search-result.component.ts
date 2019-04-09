@@ -19,7 +19,7 @@ export class SearchResultComponent implements OnInit {
    }
 
   ngOnInit() {
-    //this.init();
+    this.init();
     this.video = this.result.id //video id
     window['onYouTubeIframeAPIReady'] = (e) => {
       this.YT = window['YT'];
@@ -35,7 +35,7 @@ export class SearchResultComponent implements OnInit {
   }
   init() {
     var tag = document.createElement('script');
-    tag.src = "";
+    tag.src = 'https://www.youtube.com/iframe_api';
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   }

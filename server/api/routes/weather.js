@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const checkAuth = require('../auth/auth-guard');
 
 const Weather = require('../models/weather');
 
 
 
-router.post('/', (req, res, next) => {
+router.post('/', checkAuth,(req, res, next) => {
     const weather = new Weather({
         userId: req.body.userId,
         zip: req.body.zip,
@@ -42,7 +43,7 @@ router.post('/', (req, res, next) => {
 
 });
 
-router.get('/', (req, res, next) => { 
+router.get('/', checkAuth,(req, res, next) => { 
     Weather.findOne(req.body.userId)
         .select('userId zip automaticLocation')
         .exec()
