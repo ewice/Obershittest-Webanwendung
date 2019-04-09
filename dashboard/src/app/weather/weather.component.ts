@@ -19,6 +19,7 @@ import {
 import {
   Wettersettings
 } from '../_interface/wettersettings';
+import { WeatherService } from '../_services/weather.service';
 
 @Component({
   selector: 'app-weather',
@@ -45,27 +46,20 @@ export class WeatherComponent implements OnInit {
   };
 
 
-  loadedWetterSettings: Wettersettings = {
-    automaticLocation: null,
-    zip: null,
-    userId: localStorage.getItem("userId")
-  };
-  weatherSettings = new FormGroup({
-    zip: new FormControl(this.loadedWetterSettings.zip),
-    automaticLocation: new FormControl(''),
-    colorInput: new FormControl('')
-  });
+  loadedWetterSettings;
 
-  constructor(private _http: HttpClient, private _httpS: HttpService) {
+
+  constructor(private _http: HttpClient, private _httpS: HttpService, private _weather: WeatherService) {
+    this.loadedWetterSettings = _weather.loadedWetterSettings
     _httpS.getWeatherSettings().subscribe(data => {
       this.loadedWetterSettings.automaticLocation = data["doc"].automaticLocation;
       this.loadedWetterSettings.zip = data["doc"].zip;
 
       console.log(this.loadedWetterSettings);
-      this.weatherSettings.patchValue({
+      this._weather.weatherSettings.patchValue({
         zip: this.loadedWetterSettings.zip
       });
-      this.weatherSettings.patchValue({
+      this._weather.weatherSettings.patchValue({
         automaticLocation: this.loadedWetterSettings.automaticLocation
       });
 

@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-
+const checkAuth = require('../auth/auth-guard');
 const DashboardPosition = require('../models/dashboardPosition');
 
 
 
-router.post('/', (req, res, next) => {
+router.post('/', checkAuth, (req, res, next) => {
     const dashboar = new DashboardPosition({
         dashboard: req.body.dashboard,
         userId: req.body.userId
@@ -43,7 +43,7 @@ router.post('/', (req, res, next) => {
     })
 });
 
-router.get('/:userId', (req, res, next) => {        
+router.get('/:userId', checkAuth, (req, res, next) => {        
     DashboardPosition.findOne({userId: req.params.userId})
         .select('userId dashboard')
         .exec()

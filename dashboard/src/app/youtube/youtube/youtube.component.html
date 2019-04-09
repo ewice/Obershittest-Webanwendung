@@ -1,5 +1,5 @@
-<ngx-flip [flip]="active">
-<div class='container' front>
+
+<div class='container'>
     <div class="page-header">
         <h2>YouTube
             <img style="float: right;" *ngIf="loading" src='assets/images/loading.gif' />
@@ -17,7 +17,4 @@
         <app-search-result *ngFor="let result of results" [result]="result"></app-search-result>
     </div>
 </div>
-<div class="settings" back>
 
-</div>
-</ngx-flip>

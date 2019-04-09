@@ -5,6 +5,8 @@ import { VideoDetail } from '../youtube/video-detail.model';
 import { HttpService } from '../_services';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ColorsService } from '../_services/colors.service';
+import { WeatherService } from '../_services/weather.service';
+import { AuthFirebaseService } from '../_services/auth-firebase.service';
 
 @Component({
   selector: 'app-home',
@@ -14,15 +16,14 @@ import { ColorsService } from '../_services/colors.service';
 export class HomeComponent implements OnInit {
   options: GridsterConfig;
   dashboard: Array<GridsterItem>;
-  results: VideoDetail[];
-  loading: boolean;
-  message = '';
+
   settingMenuIsActive = false;
   selectedColor: String;
   color = new FormGroup({
     colorInput: new FormControl('')
   });
   active: Boolean;
+
 
   static itemChange(item, itemComponent) {
     console.log('itemChanged');
@@ -34,7 +35,7 @@ export class HomeComponent implements OnInit {
   private eventStop(item: GridsterItem, itemComponent: GridsterItemComponentInterface, event: MouseEvent) {
   }
 
-  constructor(private _http: HttpService, public _colorService: ColorsService) {
+  constructor(private _http: HttpService, public _colorService: ColorsService, private _weather: WeatherService, private auth: AuthFirebaseService) {
     console.log("test");
 
     this.options = {
@@ -154,14 +155,7 @@ export class HomeComponent implements OnInit {
     this.dashboard.push({x: 0, y: 0, cols: 1, rows: 1});
   }
 
-  updateResults(results: VideoDetail[]): void {
-    this.results = results;
-    if (this.results.length === 0) {
-      this.message = 'Not found...';
-    } else {
-      this.message = 'Top 10 results:';
-    }
-  }
+
 
   toggleSettingsMenu() {
     this.active = !this.active;

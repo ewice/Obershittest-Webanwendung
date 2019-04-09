@@ -29,48 +29,34 @@ export class HttpService {
     })
   };
 
+  httpOptionsAuthorization = {
+    headers: new HttpHeaders({
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    })
+  };
+
 // ##########################################################
 //                            ToDo
 // ##########################################################
 
   // GET
   public getToDo(): Observable<ToDo[]> {
-    const httpOptions = {
-        headers: new HttpHeaders({
-            'Content-Type': 'application/json'
-        })
-    };
-    return this._http.get<ToDo[]>(this.urlTodos, httpOptions);
+    return this._http.get<ToDo[]>(this.urlTodos, this.httpOptionsAuthorization);
 }
 
 // POST
 public postToDo(object: ToDo): Observable<ToDo> {
-  const httpOptions = {
-      headers: new HttpHeaders ({
-          'Content-Type': 'application/json'
-      })
-  };
-  return this._http.post<ToDo>(this.urlTodos, object, httpOptions);
+  return this._http.post<ToDo>(this.urlTodos, object, this.httpOptionsAuthorization);
 }
 
 // DELETE
 public deleteToDo(object: ToDo): Observable<ToDo> {
-  const httpOptions = {
-      headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-      })
-  };
-  return this._http.delete<ToDo>(this.urlTodos + object._id, httpOptions);
+  return this._http.delete<ToDo>(this.urlTodos + object._id, this.httpOptionsAuthorization);
 }
 
 // PUT
 public putToDo(object: ToDo): Observable<ToDo> {
-  const httpOptions = {
-      headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-      })
-  };
-  return this._http.patch<ToDo>(this.urlTodos + object._id, object, httpOptions);
+  return this._http.patch<ToDo>(this.urlTodos + object._id, object, this.httpOptionsAuthorization);
 }
 
 // ##########################################################
@@ -122,7 +108,7 @@ public putToDo(object: ToDo): Observable<ToDo> {
   }
 
   getWeatherSettings() {
-    return this._http.get<Wettersettings>(this.urlWeather, this.httpOptions);
+    return this._http.get<Wettersettings>(this.urlWeather, this.httpOptionsAuthorization);
   }
 
   sendDashboardPositions(dashboard: Array<GridsterItem>) {
@@ -131,7 +117,7 @@ public putToDo(object: ToDo): Observable<ToDo> {
       userId: localStorage.getItem("userId")
     }
 
-    this._http.post<DashboardPositions>(this.urlDashboardPositions, temporalDashboard, this.httpOptions).subscribe(data => {
+    this._http.post<DashboardPositions>(this.urlDashboardPositions, temporalDashboard, this.httpOptionsAuthorization).subscribe(data => {
 
     });
   }
