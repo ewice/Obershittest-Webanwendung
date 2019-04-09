@@ -86,8 +86,7 @@
     <app-template-todo-list></app-template-todo-list> -->
 </div>
 <div id="logout">
-    <a id="settingsButton" (click)="toggleSettingsMenu()">Settings</a>
-    <a id="logoutButton" (click)="logout()" routerLink="/login" routerLinkActive="active">Logout</a>
+  
   <div>
     Hinzufügen:
     <a (click)="addComponent('spotify'); spotify = false" [ngStyle]="{'color':spotify === true ? 'white' : 'gray' }">Spotify</a>
