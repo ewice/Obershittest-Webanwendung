@@ -21,7 +21,7 @@
 
             <section class="settings" back>
 
-                <form [formGroup]="_weather.weatherSettings" (ngSubmit)="onSubmit()" *ngIf="item.type =='weather'">
+                <form [formGroup]="_weather.weatherSettings" (ngSubmit)="_weather.onSubmit()" *ngIf="item.type =='weather'">
                     <label>
                       PLZ:
                       <input type="text" formControlName="zip" id="plzInputField">
