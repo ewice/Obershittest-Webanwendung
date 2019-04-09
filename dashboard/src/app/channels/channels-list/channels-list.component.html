@@ -1,5 +1,6 @@
 <div>
-  <a *ngFor="let channel of channels">
-    {{ channel.title | trim:0:30 }}
-  </a>
+  <label *ngFor="let channel of channels">
+    <input type="radio" name="id" (click)="selectedChannelItem( channel._id )">
+    <span>{{ channel.title }}<br></span>
+  </label>
 </div>

@@ -1,10 +1,12 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpUrlEncodingCodec } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { User, ToDo, Channel } from '../_interface';
-import { AuthService, Rss2jsonService } from '../_services/index';
+import { AuthService } from '../_services/auth.service';
+import { Rss2jsonService } from '../_services/rss2json.service';
+
 
 
 @Injectable({
@@ -21,7 +23,7 @@ export class HttpService {
 
   urlTodos = 'http://localhost:3000/todos/';
   urlUsers = 'http://localhost:3000/users/';
-  urlRss = 'http://localhost:3000/rss/';
+  urlChannels = 'http://localhost:3000/channels/';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -126,17 +128,17 @@ public putToDo(object: ToDo): Observable<ToDo> {
             'Content-Type': 'application/json'
         })
     };
-    return this._http.get<Channel[]>(this.urlRss, httpOptions);
+    return this._http.get<Channel[]>(this.urlChannels, httpOptions);
   }
 
   // GET
-  public getRssChannel(id: String): Observable<Channel[]> {
+  public getRssChannel(id: String): Observable<Channel> {
     const httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json'
         })
     };
-    return this._http.get<Channel[]>(this.urlRss + id, httpOptions);
+    return this._http.get<Channel>(this.urlChannels + id, httpOptions);
   }
 
   // POST
@@ -146,18 +148,18 @@ public putToDo(object: ToDo): Observable<ToDo> {
             'Content-Type': 'application/json'
         })
     };
-    return this._http.post<Channel>(this.urlRss, object, httpOptions);
+    return this._http.post<Channel>(this.urlChannels, object, httpOptions);
   }
 
   // XML in JSON umwandeln
-  public parseChannel(url: String) {
+  public parseChannel(url: string) {
+    const encodedUrl = '?rss_url=' + encodeURI(url);
     const httpOptions = {
       headers: new HttpHeaders({
-        'rss_url': 'url',
-        'api_key': this .rss2json.getApiKey(),
-        'count': this .rss2json.getCountMessages()
+        'api_key': this.rss2json.getApiKey(),
+        'count': this.rss2json.getCountMessages()
       })
     };
-    return this ._http.get(this .rss2json.getEndpoint(), httpOptions);
+    return this ._http.get(this.rss2json.getEndpoint() + encodedUrl, httpOptions);
   }
 }

@@ -15,7 +15,8 @@
         <div class="button-holder">
           <div class="gridster-item-content" *ngIf="item.hasContent">
             <app-weather *ngIf="item.type == 'weather'"></app-weather>
-            <app-channels *ngIf="item.type == 'channel-list'"></app-channels>
+            <app-channel *ngIf="item.type == 'channel'"></app-channel>
+            <app-channels-list *ngIf="item.type == 'channels-list'"></app-channels-list>
           </div>
           <label *ngIf="!item.hasContent">{{item.label}}</label>
           <button mat-icon-button mat-raised-button class="remove-button" (mousedown)="removeItem($event, item)"
@@ -25,9 +26,6 @@
           </div>
       </gridster-item>
     </gridster>
-    <!-- <app-template-clock></app-template-clock>
-    <app-template-calendar></app-template-calendar>
-    <app-template-todo-list></app-template-todo-list> -->
 </div>
 <div id="logout">
     <a (click)="logout()" routerLink="/login" routerLinkActive="active">Logout</a>

@@ -1,10 +1,10 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Channel, Message } from '../_interface';
-import { HelperService, HttpService } from '../_services/index';
+import { HelperService } from '../_services/helper.service';
+import { HttpService } from '../_services/http.service';
 
 @ Injectable()
 export class MessagesService {
-  message = new EventEmitter< Message >();
   messages = [];
 
   constructor(
@@ -13,9 +13,11 @@ export class MessagesService {
   ) {}
 
   // Alle Nachrichten abrufen
-  getMessages(channel: Channel) {
-    this.addMessages(channel);
-    return this.messages;
+  saveMessages(id: String) {
+    this.messages = [];
+    this.httpService.getRssChannel(id).subscribe(channel => {
+      this.addMessages(channel);
+    });
   }
 
   // Informationen zu ein Nachricht
@@ -61,7 +63,6 @@ export class MessagesService {
               item.author,
               enclosure
             );
-
             this.messages.push(message);
           }
         } else {

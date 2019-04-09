@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { MessagesService } from '../../../_shared/_services';
 
 @ Component({
   selector: 'app-messages-list',
@@ -8,16 +8,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class MessagesListComponent implements OnInit {
 
-  constructor(private router: Router,
-              private route: ActivatedRoute) { }
+  constructor(private messagesService: MessagesService) {
+  }
 
   ngOnInit() {
-  }
-
-  loadMessages() {
-  }
-
-  loadMessage(messageId: string) {
-    this .router.navigate(['message', messageId], { relativeTo: this .route });
   }
 }

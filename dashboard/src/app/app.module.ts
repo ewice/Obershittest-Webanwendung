@@ -8,16 +8,19 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CalendarComponent, ClockComponent, TemplateTodoComponent, TemplateTodoFormComponent, TodoListComponent } from './_template';
+import { WeatherComponent } from './weather/weather.component';
+import { ChannelsListComponent } from './channels/channels-list/channels-list.component';
+import { ChannelComponent } from './channels/channel/channel.component';
+import { MessagesListComponent } from './channels/channel/messages-list/messages-list.component';
+
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DragulaModule } from 'ng2-dragula';
 
-import { HttpService, AuthService } from './_shared/_services';
+import { HttpService, AuthService, Rss2jsonService, ChannelsService, MessagesService, HelperService } from './_shared/_services';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { GridsterModule } from 'angular-gridster2';
-import { WeatherComponent } from './weather/weather.component';
-
 
 export function tokenGetter() {
   const cookie = new CookieService();
@@ -31,6 +34,9 @@ export function tokenGetter() {
     LoginComponent,
     RegisterComponent,
     CalendarComponent,
+    ChannelComponent,
+    ChannelsListComponent,
+    MessagesListComponent,
     ClockComponent,
     TemplateTodoComponent,
     TemplateTodoFormComponent,
@@ -51,7 +57,7 @@ export function tokenGetter() {
     }),
     DragulaModule.forRoot()
   ],
-  providers: [HttpService, CookieService],
+  providers: [HttpService, CookieService, Rss2jsonService, ChannelsService, MessagesService, HelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
