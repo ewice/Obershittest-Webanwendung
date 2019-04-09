@@ -6,7 +6,6 @@
 
 .todo
     width: 100%
-    margin: 0 0 $cube 0
     display: flex
     flex-flow: row
     justify-content: space-between
@@ -19,7 +18,7 @@
         justify-content: flex-start
         align-items: center
         .handle
-            background-color: $green
+            background-color: transparent
             height: 100%
             width: $cube*1.5
             display: flex
@@ -29,20 +28,20 @@
             cursor: grab
         .todo-content-check
             display: flex
-            margin: $cube*2
+            //margin: $cube*2
             flex-flow: row
             justify-content: center
             align-items: center
             cursor: pointer
             img
-                width: $cube*3.5
-                height: $cube*3.5
+                width: $cube*2
+                height: $cube*2
         .todo-content-titel
             width: 100%
             input
                 font-size: $cube*1.5
                 padding: $cube*2
-                color: white
+                color: $grey
                 width: 100%
                 border: none
                 word-break: break-word

@@ -1,15 +1,32 @@
-<div class="list-view">
+<ngx-flip [flip]="active">
+<div class="list-view" front>
+  <app-template-todo-form (ping)="create($event)"></app-template-todo-form>
   <div class="list-open">
-    <h4 (click)="toDoShow=!toDoShow">Offen <span>( {{ $todos.length }} )</span></h4>
+    <h2 (click)="toDoShow=!toDoShow">Offen <span>( {{ $todos.length }} )</span></h2>
     <div dragula="todos" [dragulaModel]="$todos" (dragulaModelChange)="$todos = $event" *ngIf="toDoShow" class="todo-elements">
       <app-template-todo (ping)="update($event)" [toDo$]="toDo" *ngFor="let toDo of $todos"></app-template-todo>
     </div>
-    <app-template-todo-form (ping)="create($event)"></app-template-todo-form>
   </div>
   <div class="list-closed">
-    <h4 (click)="toDoDoneShow=!toDoDoneShow">Erledigt <span>( {{ $todosdone.length }} )</span></h4>
+    <h2 (click)="toDoDoneShow=!toDoDoneShow">Erledigt <span>( {{ $todosdone.length }} )</span></h2>
     <div *ngIf="toDoDoneShow" class="todo-elements">
       <app-template-todo (ping)="update($event)" [toDo$]="toDo" *ngFor="let toDo of $todosdone"></app-template-todo>
     </div>
   </div>
 </div>
+<div class="list-view" back>
+    <!-- <form [formGroup]="colorTodo" (ngSubmit)="onSubmit()">
+        <label>
+          PLZ:
+          <input type="text" formControlName="zip" id="plzInputField">
+        </label>
+        <br>
+        <label>
+          Standort automatisch setzen?
+          <input id="checkbox" type="checkbox" formControlName="automaticLocation">
+        </label>
+        <br>
+        <button class="btn-settings" type="submit" [disabled]="!weatherSettings.valid">Suchen</button>
+      </form> -->
+</div>
+</ngx-flip>

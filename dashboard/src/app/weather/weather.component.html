@@ -1,9 +1,14 @@
-<span>
-  {{wetter.temp}}
+<section>
+<span id="temperatur">
+  {{_weather.wetter.temp}} &deg;C
 </span>
+<img src="{{ _weather.wetter.iconSrc }}" alt="" srcset="">
 <br>
-<span>
-  {{wetter.location}}
-</span>
-<img src="{{ wetter.iconSrc }}" alt="" srcset="">
+<h2>
+  Wetter in: {{_weather.wetter.location}}
+</h2>
+</section>
+<section class="settings">
+
+</section>
 

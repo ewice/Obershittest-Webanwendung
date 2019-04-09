@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const checkAuth = require('../auth/auth-guard');
 
 const Todo = require('../models/todo');
 
-router.get('/', (req, res, next) => {
+router.get('/', checkAuth, (req, res, next) => {
     Todo.find()
         .select('label status position _id')
         .exec()
@@ -23,7 +24,7 @@ router.get('/', (req, res, next) => {
         });
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', checkAuth, (req, res, next) => {
     const todo = new Todo({
         _id: new mongoose.Types.ObjectId(),
         label: req.body.label,
@@ -41,7 +42,7 @@ router.post('/', (req, res, next) => {
         });
 });
 
-router.get('/:todoId', (req, res, next) => {
+router.get('/:todoId', checkAuth, (req, res, next) => {
     const id = req.params.todoId;
     Todo.findById(id)
         .select('label status position _id')
@@ -62,7 +63,7 @@ router.get('/:todoId', (req, res, next) => {
         });
 });
 
-router.patch('/:todoId', (req, res, next) => {
+router.patch('/:todoId', checkAuth,(req, res, next) => {
     const id = req.params.todoId;
 
     Todo.updateOne({ _id: id }, { $set: req.body })
@@ -78,7 +79,7 @@ router.patch('/:todoId', (req, res, next) => {
         });
 });
 
-router.delete('/:todoId', (req, res, next) => {
+router.delete('/:todoId', checkAuth,(req, res, next) => {
     const id = req.params.todoId;
     Todo.deleteOne({_id: id})
         .exec()

@@ -10,8 +10,9 @@
     flex-flow: row
     justify-content: space-between
     align-items: stretch
-    height: $cube*6
+    height: $cube*4
     cursor: grab
+    background-color: $grey
     .todo-content
         width: 100%
         display: flex
@@ -21,7 +22,7 @@
         input
             font-size: $cube*1.5
             padding: $cube*2
-            color: white
+            color: $white
             background-color: $white
             width: 100%
             border: none
@@ -30,15 +31,15 @@
         input::placeholder
             opacity: 0.5
             font-style: italic
-            color: white
+            color: $light-grey
         input:focus
             outline: none
     .create
-        color: $white
+        color: $white !important
         font-size: $cube*1.5
         padding: $cube*2
         cursor: pointer
-        background-color: $green
+        background-color: $dark-grey
         span
             height: 100%
             width: 100%
@@ -46,3 +47,6 @@
             flex-flow: row
             justify-content: center
             align-items: center
+            color: $white !important
+            font-size: 20pt
+            font-weight: $bold

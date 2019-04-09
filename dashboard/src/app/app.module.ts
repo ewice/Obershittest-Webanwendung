@@ -16,11 +16,23 @@ import { MessagesListComponent } from './channels/channel/messages-list/messages
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DragulaModule } from 'ng2-dragula';
+import { FlipModule } from 'ngx-flip';
 
-import { HttpService, AuthService, Rss2jsonService, ChannelsService, MessagesService, HelperService } from './_shared/_services';
+import { HttpService, AuthService, Rss2jsonService, ChannelsService, MessagesService, HelperService } from '../_services/index';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { GridsterModule } from 'angular-gridster2';
+import { WeatherComponent } from './weather/weather.component';
+import { SpotifyComponent } from './spotify/spotify.component';
+import { SearchBoxComponent } from './youtube/search-box/search-box.component';
+import { SearchResultComponent } from './youtube/search-result/search-result.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire';
+
+import { environment } from '../environments/environment';
+import { YoutubeComponent } from './youtube/youtube/youtube.component';
+
+
 
 export function tokenGetter() {
   const cookie = new CookieService();
@@ -41,15 +53,23 @@ export function tokenGetter() {
     TemplateTodoComponent,
     TemplateTodoFormComponent,
     TodoListComponent,
-    WeatherComponent
+    WeatherComponent,
+    SpotifyComponent,
+    SearchBoxComponent,
+    SearchResultComponent,
+    CalendarComponent,
+    YoutubeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     GridsterModule,
+    FlipModule,
     FormsModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter

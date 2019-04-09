@@ -4,99 +4,63 @@
 // ##########################################################
 // ##########################################################
 
+
+#dashboard-to-do
+  background-color: $background1
+
+
 #dashboard
-  height: 100vh
-  width: 100vw
-  background: $background
-  nav
-    height: 100%
-    width: 4%
-    background: $green
-    padding: 0.7%
-    float: left
-    .hamburg
-      margin-top: 10px
-      width: 100%
-      height: 30px
-      position: relative
-      transform: rotate(0deg)
-      transition: .5s ease-in-out
-      cursor: pointer
-    .linie
-      display: block
-      position: absolute
-      height: 3px
-      width: 50%
-      background: white
-      opacity: 1
-      left: 0
-      transform: rotate(0deg)
-      transition: .25s ease-in-out
-    .unclicked
-      span:nth-child(even)
-        left: 50%
-      span:nth-child(odd)
-        left: 0px
-      span:nth-child(1), span:nth-child(2)
-        top: 0px
-      span:nth-child(3), span:nth-child(4)
-        top: 12px
-      span:nth-child(5), span:nth-child(6)
-        top: 24px
-
-    .clicked
-      span:nth-child(1), span:nth-child(6)
-        transform: rotate(45deg)
-      span:nth-child(2), span:nth-child(5)
-        transform: rotate(-45deg)
-      span:nth-child(1)
-        left: 5px
-        top: 7px
-      span:nth-child(2)
-        left: calc(50% - 5px)
-        top: 7px
-      span:nth-child(3)
-        left: -50%
-        top: 13px
-        opacity: 0
-      span:nth-child(4)
-        left: 100%
-        top: 13px
-        opacity: 0
-      span:nth-child(5)
-        left: 5px
-        top: 19px
-      span:nth-child(6)
-        left: calc(50% - 5px)
-        top: 19px
-
-  gridster
-    width: 96%
+    height: 100vh
+    width: 100vw
     background: $background
-    gridster-item
-      box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.20)
-      transition: all 0.3s cubic-bezier(.25,.8,.25,1)
-      padding: 5px !important
-      background-color: $blue
-      &:hover
-        box-shadow: 0 3px 14px rgba(0,0,0,0.3), 0 3px 8px rgba(0,0,0,0.3)
+
+    gridster
+        background: $grey
+
+        gridster-item
+            box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.20)
+            border-radius: 3px
+            transition: all 0.3s cubic-bezier(.25,.8,.25,1)
+            background-color: $light-grey
+            padding: 5px 5px 5px 5px !important
+            overflow: scroll
+            &:hover
+                box-shadow: 0 3px 40px rgba(0,0,0,0.3), 0 3px 30px rgba(0,0,0,0.3)
+            form
+              height: 30%
+              margin-bottom: 50px
+
+.button-holder
+  height: 50%
 
 #logout
-    background: $green
+    background: $dark-grey
     text-align: right
     padding: $cube $cube*3
+    display: flex
+    justify-content: space-between
     a
-      color: white
-      font-weight: 500
+        color: $light-grey
+        font-weight: 500
+        margin-left: 20px
+        cursor: pointer
 
-// app-template-calendar
-//   position: absolute
-//   top: 0
-//   left: 0
 
-// app-template-clock
-//   width: 100vw
-//   height: 100vh
-//   display: flex
-//   justify-content: center
-//   align-items: center
+
+app-template-calendar
+    position: absolute
+    top: 0
+    left: 0
+
+app-template-clock
+    width: 100vw
+    height: 100vh
+    display: flex
+    justify-content: center
+    align-items: center
+
+app-template-todo-list
+  width: 5000px
+  position: relative
+
+
