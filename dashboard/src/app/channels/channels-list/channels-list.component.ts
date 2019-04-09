@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Channel } from '../../_shared/_interface';
-import { HttpService, ChannelsService } from '../../_shared/_services';
+import { Channel } from '../../../_interface/index';
+import { HttpService, ChannelsService } from '../../../_services/index';
 
 @Component({
   selector: 'app-channels-list',

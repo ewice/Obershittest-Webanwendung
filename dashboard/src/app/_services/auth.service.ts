@@ -6,12 +6,8 @@ import { FormGroup, FormControl } from '@angular/forms';
   providedIn: 'root'
 })
 export class AuthService {
-   
-  constructor(private jwtHelper: JwtHelperService) {
+  constructor(private jwtHelper: JwtHelperService) {}
 
-
-
-  }
   isAuthenticated(): Boolean {
     const token = localStorage.getItem('token');
     if (token === undefined) {
