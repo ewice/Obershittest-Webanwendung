@@ -102,13 +102,13 @@ public putToDo(object: ToDo): Observable<ToDo> {
 
 
   sendWeatherSettings(settings: Wettersettings) {
-    this._http.post<Wettersettings>(this.urlWeather, settings, this.httpOptions).subscribe();
+    this._http.post<Wettersettings>(this.urlWeather, settings, this.httpOptionsAuthorization).subscribe();
     console.log('done');
 
   }
 
   getWeatherSettings() {
-    return this._http.get<Wettersettings>(this.urlWeather, this.httpOptionsAuthorization);
+    return this._http.get<Wettersettings>(this.urlWeather, this.httpOptions);
   }
 
   sendDashboardPositions(dashboard: Array<GridsterItem>) {
@@ -123,6 +123,6 @@ public putToDo(object: ToDo): Observable<ToDo> {
   }
 
   getDashboardPositions(): Observable<Array<GridsterItem>>{
-   return this._http.get<Array<GridsterItem>>(this.urlDashboardPositions + localStorage.getItem("userId"), this.httpOptions);
+   return this._http.get<Array<GridsterItem>>(this.urlDashboardPositions + localStorage.getItem("userId"), this.httpOptionsAuthorization);
   }
 }

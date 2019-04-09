@@ -84,6 +84,17 @@
     <app-template-todo-list></app-template-todo-list> -->
 </div>
 <div id="logout">
-    <a (click)="toggleSettingsMenu()">Settings</a>
-    <a (click)="logout()" routerLink="/login" routerLinkActive="active">Logout</a>
+  <div>
+    Hinzufügen:
+    <a (click)="addComponent('spotify'); spotify = false" [ngStyle]="{'color':spotify === true ? 'white' : 'gray' }">Spotify</a>
+    <a (click)="addComponent('weather'); weather = false" [ngStyle]="{'color':weather === true ? 'white' : 'gray' }">Wetter</a>
+    <a (click)="addComponent('youtube'); youtube = false" [ngStyle]="{'color':youtube === true ? 'white' : 'gray' }">YouTube</a>
+    <a (click)="addComponent('rss'); rss = false" [ngStyle]="{'color':rss === true ? 'white' : 'gray' }">RSS Feed</a>
+    <a (click)="addComponent('todo'); todo = false" [ngStyle]="{'color':todo === true ? 'white' : 'gray' }">ToDo</a>
+    <a (click)="addComponent('calendar'); calendar = false" [ngStyle]="{'color':calendar === true ? 'white' : 'gray' }">Kalender</a>
+  </div>
+  <div>
+      <a (click)="toggleSettingsMenu()">Settings</a>
+      <a (click)="logout()" routerLink="/login" routerLinkActive="active">Logout</a>
+  </div>
 </div>
