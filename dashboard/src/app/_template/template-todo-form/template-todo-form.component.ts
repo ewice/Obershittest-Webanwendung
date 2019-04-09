@@ -1,7 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ToDo } from '../../_interface';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-
 
 @Component({
   selector: 'app-template-todo-form',

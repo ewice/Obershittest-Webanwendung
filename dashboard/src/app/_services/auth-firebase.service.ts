@@ -45,7 +45,7 @@ export class AuthFirebaseService {
   }
 
   async login() {
-    const googleAuth = gapi.auth2.getAuthInstance()
+    const googleAuth = gapi.auth2.getAuthInstance();
     const googleUser = await googleAuth.signIn();
 
     const token = googleUser.getAuthResponse().id_token;
@@ -77,9 +77,9 @@ export class AuthFirebaseService {
       singleEvents: true,
       maxResults: 10,
       orderBy: 'startTime'
-    })
+    });
 
-    console.log(events)
+    console.log(events);
 
     this.calendarItems = events.result.items;
 
@@ -109,8 +109,8 @@ export class AuthFirebaseService {
    onSubmit() {
     console.log(new Date(Date.now()).toISOString());
 
-   const start = this.eventForm.value.start + "T" + this.eventForm.value.startTime + ":00.000" + "Z";
-    const end = this.eventForm.value.end + "T" + this.eventForm.value.endTime + ":00.000" + "Z";
+   const start = this.eventForm.value.start + 'T' + this.eventForm.value.startTime + ':00.000' + 'Z';
+    const end = this.eventForm.value.end + 'T' + this.eventForm.value.endTime + ':00.000' + 'Z';
      this.insertEvent(this.eventForm.value.summary, this.eventForm.value.desc, start, end);
    }
 }

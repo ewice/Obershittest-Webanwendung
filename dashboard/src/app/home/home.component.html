@@ -1,104 +1,103 @@
 ﻿<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div id="dashboard">
-    <gridster [options]="options">
-        <gridster-item [item]="item" *ngFor="let item of dashboard" [ngStyle]="{'background': item.bg}">
-          <ngx-flip [flip]="active">
-          <div class="button-holder" front>
-            <button mat-icon-button mat-raised-button class="remove-button" (mousedown)="removeItem($event, item)"
-              (touchstart)="removeItem($event, item)">
-              <i class="fa fa-close"></i>
-            </button>
-            <label *ngIf="!item.hasContent">{{item.label}}</label>
-            <div class="gridster-item-content" *ngIf="item.hasContent">
-              <app-calendar *ngIf="item.type == 'calendar'" ></app-calendar>
-              <app-weather *ngIf="item.type == 'weather'" ></app-weather>
-              <app-template-todo-list *ngIf="item.type == 'todo'" ></app-template-todo-list>
-              <app-youtube  *ngIf="item.type == 'youtube'" ></app-youtube>
-              <app-spotify *ngIf="item.type =='spotify'"></app-spotify>
-            </div>
-</div>
+  <gridster [options]="options">
+    <gridster-item [item]="item" *ngFor="let item of dashboard" [ngStyle]="{'background': item.bg}">
+      <ngx-flip [flip]="active">
+        <div class="button-holder" front>
+          <button mat-icon-button mat-raised-button class="remove-button" (mousedown)="removeItem($event, item)"
+            (touchstart)="removeItem($event, item)">
+            <i class="fa fa-close"></i>
+          </button>
+          <label *ngIf="!item.hasContent">{{item.label}}</label>
+          <div class="gridster-item-content" *ngIf="item.hasContent">
+            <app-calendar *ngIf="item.type == 'calendar'"></app-calendar>
+            <app-channel *ngIf="item.type == 'channel'"></app-channel>
+            <app-weather *ngIf="item.type == 'weather'"></app-weather>
+            <app-template-todo-list *ngIf="item.type == 'todo'"></app-template-todo-list>
+            <app-youtube *ngIf="item.type == 'youtube'"></app-youtube>
+            <app-spotify *ngIf="item.type =='spotify'"></app-spotify>
+          </div>
+        </div>
 
+        <section class="settings" back>
+          <app-channels-list *ngIf="item.type == 'channel'"></app-channels-list>
+          <form [formGroup]="_weather.weatherSettings" (ngSubmit)="_weather.onSubmit()" *ngIf="item.type =='weather'">
+            <label>
+              PLZ:
+              <input type="text" formControlName="zip" id="plzInputField">
+            </label>
+            <br>
+            <label>
+              Standort automatisch setzen?
+              <input id="checkbox" type="checkbox" formControlName="automaticLocation">
+            </label>
+            <br>
+            <button class="btn-settings" type="submit" [disabled]="!_weather.weatherSettings.valid">Suchen</button>
+          </form>
+          <form [formGroup]="auth.eventForm" (ngSubmit)="auth.onSubmit()" *ngIf="item.type =='calendar'">
+            <label>
+              Titel:
+              <input type="text" formControlName="summary" id="summary">
+            </label>
+            <br>
+            <label>
+              Beschreibung:
+              <input type="text" formControlName="desc" id="desc">
+            </label>
+            <br>
+            <label>
+              Start Datum (YYYY-MM-TT):
+              <input type="text" formControlName="start" id="start">
+            </label>
+            <label>
+              Start Zeit (HH:MM):
+              <input type="text" formControlName="startTime" id="startTime">
+            </label>
+            <label>
+              End Datum (YYYY-MM-TT):
+              <input type="text" formControlName="end" id="end">
+            </label>
+            <label>
+              End Zeit (HH:MM):
+              <input type="text" formControlName="endTime" id="endTime">
+            </label>
+            <button class="btn-settings" type="submit" [disabled]="!auth.eventForm.valid">Suchen</button>
+          </form>
+          <label>
+            Farbe:
+          </label>
+          <select name="colorInput" [(ngModel)]="selectedColor">
+            <option *ngFor="let color of _colorService.colors" [ngValue]="color" [ngStyle]="{'background': color}">
+              {{ color }}
+            </option>
+          </select>
 
-            <section class="settings" back>
+          <br>
+          <button class="btn-settings" (click)="onSubmit(item)" type="submit">Farbe ändern</button>
 
-                <form [formGroup]="_weather.weatherSettings" (ngSubmit)="_weather.onSubmit()" *ngIf="item.type =='weather'">
-                    <label>
-                      PLZ:
-                      <input type="text" formControlName="zip" id="plzInputField">
-                    </label>
-                    <br>
-                    <label>
-                      Standort automatisch setzen?
-                      <input id="checkbox" type="checkbox" formControlName="automaticLocation">
-                    </label>
-                    <br>
-                    <button class="btn-settings" type="submit" [disabled]="!_weather.weatherSettings.valid">Suchen</button>
-                    <section id="alarm" *ngIf="_weather.error==true">falsche Postleitzahl</section>
-
-                  </form>
-                  <form [formGroup]="auth.eventForm" (ngSubmit)="auth.onSubmit()" *ngIf="item.type =='calendar'">
-                      <label>
-                        Titel:
-                        <input type="text" formControlName="summary" id="summary">
-                      </label>
-                      <br>
-                      <label>
-                          Beschreibung:
-                          <input type="text" formControlName="desc" id="desc">
-                        </label>
-                      <br>
-                      <label>
-                           Start Datum (YYYY-MM-TT):
-                          <input type="text" formControlName="start" id="start">
-                        </label>
-                        <label>
-                            Start Zeit (HH:MM):
-                           <input type="text" formControlName="startTime" id="startTime">
-                         </label>
-                         <label>
-                            End Datum (YYYY-MM-TT):
-                           <input type="text" formControlName="end" id="end">
-                         </label>
-                         <label>
-                             End Zeit (HH:MM):
-                            <input type="text" formControlName="endTime" id="endTime">
-                          </label>
-                      <button class="btn-settings" type="submit" [disabled]="!auth.eventForm.valid">Suchen</button>
-                    </form>
-                  <label>
-                      Farbe:
-                    </label>
-                      <select name="colorInput" [(ngModel)]="selectedColor">
-                          <option *ngFor="let color of _colorService.colors" [ngValue]="color" [ngStyle]="{'background': color}">
-                              {{ color }}
-                          </option>
-                      </select>
-
-                  <br>
-                  <button class="btn-settings" (click)="onSubmit(item)" type="submit">Farbe ändern</button>
-
-              </section>
-              </ngx-flip>
-        </gridster-item>
-      </gridster>
-    <!-- <app-template-clock></app-template-clock>
-    <app-template-calendar></app-template-calendar>
-    <app-template-todo-list></app-template-todo-list> -->
+        </section>
+      </ngx-flip>
+    </gridster-item>
+  </gridster>
 </div>
 <div id="logout">
     <a id="settingsButton" (click)="toggleSettingsMenu()">Settings</a>
     <a id="logoutButton" (click)="logout()" routerLink="/login" routerLinkActive="active">Logout</a>
   <div>
     Hinzufügen:
-    <a (click)="addComponent('spotify'); spotify = false" [ngStyle]="{'color':spotify === true ? 'white' : 'gray' }">Spotify</a>
-    <a (click)="addComponent('weather'); weather = false" [ngStyle]="{'color':weather === true ? 'white' : 'gray' }">Wetter</a>
-    <a (click)="addComponent('youtube'); youtube = false" [ngStyle]="{'color':youtube === true ? 'white' : 'gray' }">YouTube</a>
-    <a (click)="addComponent('rss'); rss = false" [ngStyle]="{'color':rss === true ? 'white' : 'gray' }">RSS Feed</a>
+    <a (click)="addComponent('spotify'); spotify = false"
+      [ngStyle]="{'color':spotify === true ? 'white' : 'gray' }">Spotify</a>
+    <a (click)="addComponent('weather'); weather = false"
+      [ngStyle]="{'color':weather === true ? 'white' : 'gray' }">Wetter</a>
+    <a (click)="addComponent('youtube'); youtube = false"
+      [ngStyle]="{'color':youtube === true ? 'white' : 'gray' }">YouTube</a>
+    <a (click)="addComponent('channel'); channel = false" [ngStyle]="{'color':channel === true ? 'white' : 'gray' }">Channel Feed</a>
     <a (click)="addComponent('todo'); todo = false" [ngStyle]="{'color':todo === true ? 'white' : 'gray' }">ToDo</a>
-    <a (click)="addComponent('calendar'); calendar = false" [ngStyle]="{'color':calendar === true ? 'white' : 'gray' }">Kalender</a>
+    <a (click)="addComponent('calendar'); calendar = false"
+      [ngStyle]="{'color':calendar === true ? 'white' : 'gray' }">Kalender</a>
   </div>
   <div>
-      <a (click)="toggleSettingsMenu()">Settings</a>
-      <a (click)="logout()" routerLink="/login" routerLinkActive="active">Logout</a>
+    <a (click)="toggleSettingsMenu()">Settings</a>
+    <a (click)="logout()" routerLink="/login" routerLinkActive="active">Logout</a>
   </div>
 </div>
