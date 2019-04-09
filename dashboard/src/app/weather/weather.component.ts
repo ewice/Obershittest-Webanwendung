@@ -1,24 +1,7 @@
-import {
-  Component,
-  OnInit,
-  Input
-} from '@angular/core';
-import {
-  HttpClient,
-  HttpHeaders
-} from '@angular/common/http';
-import {
-  FormControl
-} from '@angular/forms';
-import {
-  FormGroup
-} from '@angular/forms';
-import {
-  HttpService
-} from '../_services';
-import {
-  Wettersettings
-} from '../_interface/wettersettings';
+import { Component, OnInit, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { HttpService } from '../_services/http.service';
+import { Wettersettings } from '../_interface/wettersettings';
 import { WeatherService } from '../_services/weather.service';
 
 @Component({
@@ -28,18 +11,13 @@ import { WeatherService } from '../_services/weather.service';
 })
 export class WeatherComponent implements OnInit {
   @Input() active: Boolean;
-
-
-
-
   loadedWetterSettings;
 
-
-  constructor(private _http: HttpClient, private _httpS: HttpService, private _weather: WeatherService) {
-
-
-
-  }
+  constructor(
+    private _http: HttpClient,
+    private _httpS: HttpService,
+    private _weather: WeatherService
+  ) {}
 
   ngOnInit() {
 
@@ -62,7 +40,7 @@ export class WeatherComponent implements OnInit {
       }
     }
 
-    loadWheater(city ? : string, long ? : string, lat ? : string, zip ? : string) {
+    loadWheater(city?: string, long?: string, lat?: string, zip?: string) {
       this._weather.loadWheater();
     }
 
