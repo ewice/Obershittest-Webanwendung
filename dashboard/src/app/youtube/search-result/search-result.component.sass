@@ -1,4 +1,29 @@
+@import '../../../style/_var1.sass'
+
+// ##########################################################
+// ##########################################################
+// ##########################################################
+
 .max-width-1024
   max-width: 1024px
   margin: 0 auto
+
+img
+  width: 100%
+
 .btn-youtube
+  display: inline-block
+  font-weight: 400
+  text-align: center
+  white-space: nowrap
+  vertical-align: middle
+  user-select: none
+  border: 1px solid $background
+  padding: .5*$cube $cube
+  font-size: $cube*1.8
+  line-height: 1.5
+  border-radius: .25*$cube
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
+  cursor: pointer
+  margin: $cube 0 2*$cube
+

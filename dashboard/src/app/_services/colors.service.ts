@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ColorsService {
 
-  /*
+
   colors = [
     '#F6A7A7',
     '#6CCECA',
@@ -19,9 +19,10 @@ export class ColorsService {
     '#EAEAEA',
     '#C6CFFF'
   ];
-  */
 
+/*
  colors = [
+  '#FFFFFF',
   '#FFB935',
   '#F26249',
   '#BC3D44',
@@ -32,6 +33,7 @@ export class ColorsService {
   '#00FFFF',
   '#5FBA7D'
 ];
+*/
 
   constructor() { }
 
