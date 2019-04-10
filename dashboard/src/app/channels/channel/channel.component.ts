@@ -6,7 +6,7 @@ import { Channel } from '../../_interface/index';
 @Component({
   selector: 'app-channel',
   templateUrl: './channel.component.html',
-  styleUrls: ['./channel.component.scss']
+  styleUrls: ['./channel.component.sass']
 })
 export class ChannelComponent implements OnInit {
   channelId: String;

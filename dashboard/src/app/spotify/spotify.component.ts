@@ -119,8 +119,8 @@ export class SpotifyComponent implements OnInit {
     console.log(this.toggle);
 
     this.toggle = false;
-    this.track = "";
-    this.artist = "";
+    this.track = '';
+    this.artist = '';
     setTimeout(() => this.getTrackInfo(), 1000);
   }
 getToken(){

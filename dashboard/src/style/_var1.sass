@@ -1,0 +1,173 @@
+// Color Palette
+$white: #ffffff
+$light-grey: #F4F4F4
+$dark-grey: #343434
+$black: #0A0A0A
+$yellow: #FFB935
+$orange: #F26249
+$red: #BC3D44
+$purple: #8C60A2
+$pink: #FF52CC
+$purple-blue: #575FCF
+$blue: #1D82E9
+$light-blue: #00FFFF
+$green: #5FBA7D
+
+//Grid background colors
+$background: #282F3A
+
+// Padding & marging, Sizing
+$cube: 1rem
+$bold: 400
+
+// Fonts
+$font: "Montserrat", sans-serif
+
+// Reset
+*
+ margin: 0
+ padding: 0
+ text-decoration: none
+ font-family: $font
+
+
+// Headlines
+h1
+ font-size: 1.9*$cube !important
+ color: $white !important
+ text-align: center
+
+h2
+  font-size: 1.7*$cube !important
+  color: $white !important
+  text-align: lesft
+  margin-bottom: 2*$cube
+
+h4
+ font-size: $cube !important
+ color: $white !important
+
+//gridster
+.gridster-item
+  padding: $cube !important
+
+.gridster-item-content
+  margin-right: $cube
+  margin-left: $cube
+  position: relative
+
+.gridster-item-headline
+ background-color: $background
+ padding: 1.3*$cube
+ margin-bottom: 0.5*$cube
+ top: 0
+ width: 100%
+
+// Button
+.btn
+   display: inline-block
+   font-weight: 400
+   text-align: center
+   white-space: nowrap
+   vertical-align: middle
+   user-select: none
+   border: 1px solid transparent
+   padding: .5*$cube $cube
+   font-size: $cube*1.8
+   line-height: 1.5
+   border-radius: .25*$cube
+   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
+   cursor: pointer
+   margin-top: $cube
+
+.btn-green
+   background-color: $green
+   color: white
+
+.btn-blue
+   background-color: $blue
+   color: $white
+   max-width: 130px
+   &:hover
+       background-color: $white
+       color: $blue
+
+.btn-ghost
+   color: $blue
+   border: 1px solid $blue
+   text-decoration: none
+   margin-left: 20%
+   max-width: 130px
+   &:hover
+       background-color: $white
+       color: $blue
+       border: 1px solid transparent
+
+button
+ background-color: transparent
+ border: none
+ i
+     color: $background
+     font-weight: bold
+
+.btn-settings
+  background-color: $background
+  margin-top: $cube
+  margin-bottom: $cube
+  display: flex
+  justify-content: center
+  color: $white
+  padding: $cube
+  text-align: center
+  width: 100%
+  position: absolute
+
+
+label
+  margin-top: $cube
+
+//costum Checkbox
+  /* Create a custom checkbox */
+#checkbox
+  float: right
+  margin-left: $cube
+
+  height: 20px
+  width: 20px
+  background-color: #eee
+
+
+/* On mouse-over, add a grey background color */
+#checkbox:hover input
+  background-color: #ccc
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark
+  background-color: #2196F3
+
+
+/* Create the checkmark/indicator (hidden when not checked) */
+#checkbox:after
+  content: ""
+  position: absolute
+  display: none
+
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after
+  display: block
+
+
+/* Style the checkmark/indicator */
+#checkbox:after
+  left: 9px
+  top: 5px
+  width: 5px
+  height: 10px
+  border: solid white
+  border-width: 0 3px 3px 0
+  -webkit-transform: rotate(45deg)
+  -ms-transform: rotate(45deg)
+  transform: rotate(45deg)
+
+

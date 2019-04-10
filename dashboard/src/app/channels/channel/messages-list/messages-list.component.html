@@ -1,8 +1,6 @@
-<table class="table table-hover message-list">
-  <tbody>
-    <tr *ngFor="let message of messagesService.messages">
+<div class="message-list">
+    <div *ngFor="let message of messagesService.messages">
       <h2 (click)="loadMessage(message.id)">{{ message.title }}</h2>
-      <div [innerHTML]="message.description"></div>
-    </tr>
-  </tbody>
-</table>
+      <div class="description" [innerHTML]="message.description"></div>
+    </div>
+</div>

@@ -4,7 +4,7 @@ import { MessagesService } from '../../../_services/index';
 @ Component({
   selector: 'app-messages-list',
   templateUrl: './messages-list.component.html',
-  styleUrls: ['./messages-list.component.scss']
+  styleUrls: ['./messages-list.component.sass']
 })
 export class MessagesListComponent implements OnInit {
 
@@ -12,5 +12,16 @@ export class MessagesListComponent implements OnInit {
   }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.cutOfImage();
+    });
+  }
+
+  cutOfImage() {
+    this.messagesService.messages.forEach(element => {
+      const descElement = element.description;
+      const description = descElement.slice(descElement.indexOf('">') + 1, descElement.length);
+      element.description = description;
+    });
   }
 }

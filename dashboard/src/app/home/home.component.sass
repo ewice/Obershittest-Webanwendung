@@ -1,4 +1,4 @@
-@import '../../style/_var.sass'
+@import '../../style/_var1.sass'
 
 // ##########################################################
 // ##########################################################
@@ -6,8 +6,7 @@
 
 
 #dashboard-to-do
-  background-color: $background1
-
+  background-color: $background
 
 #dashboard
     height: 100vh
@@ -15,15 +14,16 @@
     background: $background
 
     gridster
-        background: $grey
+        background: $background
 
         gridster-item
             box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.20)
             border-radius: 3px
             transition: all 0.3s cubic-bezier(.25,.8,.25,1)
-            background-color: $light-grey
+            background-color: $blue
             padding: 5px 5px 5px 5px !important
-            overflow: scroll
+            overflow-y: scroll
+            overflow-x: hidden
             &:hover
                 box-shadow: 0 3px 40px rgba(0,0,0,0.3), 0 3px 30px rgba(0,0,0,0.3)
             form
@@ -48,23 +48,13 @@
         border-radius: 2px
         padding: 3px 5px
 
-
-
-
-app-template-calendar
-    position: absolute
-    top: 0
-    left: 0
-
-app-template-clock
-    width: 100vw
-    height: 100vh
-    display: flex
-    justify-content: center
-    align-items: center
-
 app-template-todo-list
   width: 5000px
   position: relative
+
+.remove-button
+  position: fixed
+  top: 10px
+  left: 10px
 
 

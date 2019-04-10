@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class ChannelsService {
-  private _selectedChannel = new BehaviorSubject<String>('5cab4edb2e779f34f81f69b2');
+  private _selectedChannel = new BehaviorSubject<String>('5cab3f942e779f34f81f69b1');
   selectedItem$ = this._selectedChannel.asObservable();
 
   constructor(private httpService: HttpService) { }
