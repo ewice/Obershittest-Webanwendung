@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-
+const checkAuth = require('../auth/auth-guard');
 const Channels = require('../models/channel');
 
-router.get('/', (req, res, next) => {
+router.get('/', checkAuth, (req, res, next) => {
     Channels.find()
         .select('title url description image _id')
         .exec()
@@ -23,7 +23,7 @@ router.get('/', (req, res, next) => {
         });
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', checkAuth, (req, res, next) => {
     const channel = new Channels({
         title: req.body.title,
         url: req.body.url,
@@ -42,7 +42,7 @@ router.post('/', (req, res, next) => {
         });
 });
 
-router.get('/:channelId', (req, res, next) => {
+router.get('/:channelId', checkAuth, (req, res, next) => {
     const id = req.params.channelId;
     Channels.findById(id)
         .select('title url description image _id')

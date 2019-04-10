@@ -12,9 +12,12 @@ export class CalendarComponent implements OnInit {
   constructor(private auth: AuthFirebaseService) {
     console.log(auth.user$);
 
+
    }
 
   ngOnInit() {
-  }
+    setTimeout(() => this.auth.getCalendar(), 2000 )
+    ;
 
+  }
 }
