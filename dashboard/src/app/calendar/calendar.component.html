@@ -1,24 +1,15 @@
 
   <div class="front" >
-    <div *ngIf="auth.user$ | async as user">
-      <h3>Logged in as {{ user.displayName }}</h3>
-      <img src="{{ user.photoURL }}" width="50px">
-      <button (click)="auth.logout()">Logout</button>
-
-      <button (click)="auth.getCalendar()">Get Google Calendar</button>
-      <button (click)="auth.insertEvent()">
-        <i class="fa fa-plus"></i>
-      </button>
-
-      <div *ngFor="let item of auth.calendarItems" class="calendar-event">
-        <h3>{{ item.summary }} - {{ item.status }}</h3>
-        <p><em>Created {{ item.created }}</em></p>
-        <p>{{ item.description }}</p>
+    <h2>Mein Kalender</h2>
+    <div *ngIf="auth.user$ | async as user" class="menu">
+      <div *ngFor="let item of auth.calendarItems">
+        <div class="event-date"><p><em> {{ item.start.dateTime }}</em></p></div>
+        <div  class="calendar-event">
+            <h3>{{ item.summary }}</h3><br>
+            <p>{{ item.description }}</p>
+        </div>
       </div>
     </div>
-    <div>
-        <button (click)="auth.login()">Login with Google</button>
-      </div>
   </div>
 
 

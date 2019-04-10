@@ -119,7 +119,9 @@ public putToDo(object: ToDo): Observable<ToDo> {
   public getRssChannels(): Observable<Channel[]> {
     const httpOptions = {
         headers: new HttpHeaders({
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+
         })
     };
     return this._http.get<Channel[]>(this.urlChannels, httpOptions);
@@ -129,7 +131,9 @@ public putToDo(object: ToDo): Observable<ToDo> {
   public getRssChannel(id: String): Observable<Channel> {
     const httpOptions = {
         headers: new HttpHeaders({
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+
         })
     };
     return this._http.get<Channel>(this.urlChannels + id, httpOptions);
@@ -139,7 +143,9 @@ public putToDo(object: ToDo): Observable<ToDo> {
   public addRssChannel(object: Channel): Observable<Channel> {
     const httpOptions = {
         headers: new HttpHeaders({
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+
         })
     };
     return this._http.post<Channel>(this.urlChannels, object, httpOptions);

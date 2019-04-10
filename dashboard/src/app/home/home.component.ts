@@ -103,13 +103,13 @@ export class HomeComponent implements OnInit {
       scrollToNewItems: false
    };
 
-   this.dashboard = [
-    {cols: 2, rows: 1, y: 0, x: 0, hasContent: true, type: 'weather'},
-    {cols: 2, rows: 2, y: 0, x: 2, hasContent: true, type: 'todo'},
-    {cols: 1, rows: 2, y: 0, x: 4, hasContent: true, type: 'spotify'},
-    {cols: 1, rows: 1, y: 2, x: 5, hasContent: true, type: 'channel'},
-    {cols: 1, rows: 1, y: 2, x: 5, hasContent: true, type: 'calendar'}
-  ];
+  //  this.dashboard = [
+  //   {cols: 2, rows: 1, y: 0, x: 0, hasContent: true, type: 'weather'},
+  //   {cols: 2, rows: 2, y: 0, x: 2, hasContent: true, type: 'todo'},
+  //   {cols: 1, rows: 2, y: 0, x: 4, hasContent: true, type: 'spotify'},
+  //   {cols: 1, rows: 1, y: 2, x: 5, hasContent: true, type: 'channel'},
+  //   {cols: 1, rows: 1, y: 2, x: 5, hasContent: true, type: 'calendar'}
+  // ];
     this._http.getDashboardPositions().subscribe(data => {
         console.log(data);
 
@@ -180,7 +180,7 @@ export class HomeComponent implements OnInit {
 
   }
   addItem() {
-    this.dashboard.push({x: 0, y: 0, cols: 1, rows: 1});
+    this.dashboard.push({x: 19, y: 19, cols: 2, rows: 2});
   }
 
   toggleSettingsMenu() {
@@ -207,10 +207,10 @@ export class HomeComponent implements OnInit {
     setTimeout( () => {
       if (!isExisting) {
         this.dashboard.push({
-          x: 3,
-          y: 3,
-          cols: 1,
-          rows: 1,
+          x: 30,
+          y: 30,
+          cols: 3,
+          rows: 3,
           type: component,
           hasContent: true
         });

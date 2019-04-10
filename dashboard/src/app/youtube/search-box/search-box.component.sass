@@ -1,0 +1,53 @@
+@import '../../../style/_var.sass'
+
+// ##########################################################
+// ##########################################################
+// ##########################################################
+
+.searchbox
+    width: 100%
+    display: flex
+    flex-flow: row
+    justify-content: space-between
+    align-items: stretch
+    height: $cube*4
+    cursor: grab
+    background-color: $grey
+    .searchbox-content
+        width: 100%
+        display: flex
+        flex-flow: row
+        justify-content: flex-start
+        align-items: stretch
+        input
+            font-size: $cube*1.5
+            padding: $cube*2
+            color: $white
+            background-color: $white
+            width: 100%
+            border: none
+            word-break: break-word
+            background: none
+        input::placeholder
+            opacity: 0.5
+            font-style: italic
+            color: $light-grey
+        input:focus
+            outline: none
+    .create
+        color: $white !important
+        font-size: $cube*1.5
+        padding: $cube*2
+        cursor: pointer
+        background-color: $dark-grey
+        span
+            height: 100%
+            width: 100%
+            display: flex
+            flex-flow: row
+            justify-content: center
+            align-items: center
+            color: $white !important
+            font-size: 20pt
+            font-weight: $bold
+
