@@ -12,8 +12,10 @@
         </div>
     </div>
 
-    <div class="row" style="margin-top:20px">
+    <div class="top10">
         <p>{{message}}</p>
+      </div>
+      <div>
         <app-search-result *ngFor="let result of results" [result]="result"></app-search-result>
     </div>
 </div>
