@@ -35,6 +35,11 @@
             <button class="btn-settings" type="submit" [disabled]="!_weather.weatherSettings.valid">Suchen</button>
           </form>
           <form [formGroup]="auth.eventForm" (ngSubmit)="auth.onSubmit()" *ngIf="item.type =='calendar'">
+            <div *ngIf="auth.user$ | async as user" class="menu">
+              <h3>Logged in as {{ user.displayName }}</h3>
+              <button (click)="auth.logout()">Logout</button>
+            </div>
+              <button (click)="auth.login()">Login with Google</button>
             <label>
               Titel:
               <input type="text" formControlName="summary" id="summary">

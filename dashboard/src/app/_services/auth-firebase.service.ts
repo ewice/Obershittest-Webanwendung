@@ -20,6 +20,7 @@ export class AuthFirebaseService {
   });
   user$: Observable<firebase.User>;
   calendarItems: any[];
+  days: any[];
 
   constructor(public afAuth: AngularFireAuth) {
     this.initClient();
@@ -79,7 +80,6 @@ export class AuthFirebaseService {
       orderBy: 'startTime'
     });
 
-    console.log(events);
 
     this.calendarItems = events.result.items;
 
