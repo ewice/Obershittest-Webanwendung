@@ -1,0 +1,6 @@
+<div>
+  <label *ngFor="let channel of channels">
+    <input type="radio" name="id" (click)="selectedChannelItem( channel._id )">
+    <span>{{ channel.title }}<br></span>
+  </label>
+</div>

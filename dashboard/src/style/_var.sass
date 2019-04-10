@@ -51,14 +51,14 @@ h1
 h2
   font-size: 1.7*$cube !important
   color: $dark-grey !important
-  text-align: center
+  text-align: lesft
   margin-bottom: 2*$cube
 
 h4
  font-size: $cube !important
  color: $grey !important
 
-
+//gridster
 .gridster-item
   padding: $cube !important
 
@@ -73,25 +73,6 @@ h4
  margin-bottom: 0.5*$cube
  top: 0
  width: 100%
-
-
-// Headlines
-h1
-  font-size: 1.9rem !important
-  color: $light-grey !important
-  text-align: center
-
-h4
-  font-size: 1rem !important
-  color: $grey !important
-
-
-.gridster-item-headline
-  background-color: $dark-grey
-  padding: 1.3rem
-  margin-bottom: 0.5rem
-  top: 0
-  width: 100%
 
 // Button
 .btn
@@ -152,10 +133,53 @@ button
   width: 100%
   position: absolute
 
-#checkbox
-  float: right
-  margin-left: $cube
 
 label
   margin-top: $cube
 
+//costum Checkbox
+  /* Create a custom checkbox */
+#checkbox
+  float: right
+  margin-left: $cube
+
+  height: 20px
+  width: 20px
+  background-color: #eee
+
+
+/* On mouse-over, add a grey background color */
+#checkbox:hover input
+  background-color: #ccc
+
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark
+  background-color: #2196F3
+
+
+/* Create the checkmark/indicator (hidden when not checked) */
+#checkbox:after
+  content: ""
+  position: absolute
+  display: none
+
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after
+  display: block
+
+
+/* Style the checkmark/indicator */
+#checkbox:after
+  left: 9px
+  top: 5px
+  width: 5px
+  height: 10px
+  border: solid white
+  border-width: 0 3px 3px 0
+  -webkit-transform: rotate(45deg)
+  -ms-transform: rotate(45deg)
+  transform: rotate(45deg)
+
+  

@@ -1,4 +1,5 @@
-<div class="list-view">
+<ngx-flip [flip]="active">
+<div class="list-view" front>
   <app-template-todo-form (ping)="create($event)"></app-template-todo-form>
   <div class="list-open">
     <h2 (click)="toDoShow=!toDoShow">Offen <span>( {{ $todos.length }} )</span></h2>
@@ -13,3 +14,19 @@
     </div>
   </div>
 </div>
+<div class="list-view" back>
+    <!-- <form [formGroup]="colorTodo" (ngSubmit)="onSubmit()">
+        <label>
+          PLZ:
+          <input type="text" formControlName="zip" id="plzInputField">
+        </label>
+        <br>
+        <label>
+          Standort automatisch setzen?
+          <input id="checkbox" type="checkbox" formControlName="automaticLocation">
+        </label>
+        <br>
+        <button class="btn-settings" type="submit" [disabled]="!weatherSettings.valid">Suchen</button>
+      </form> -->
+</div>
+</ngx-flip>

@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
-const JWT_Key = 'Feuerbauchmolch';
+const JWT_Key = 'saltAndPepper';
 
 router.post('/signup', (req, res, next) => {
     User.find({email: req.body.email}).exec().then(user => {
@@ -57,9 +57,11 @@ router.post('/login', (req, res, next) =>{
                 message: 'Auth failed'
             })
         }
-        bcrypt.compare(req.body.password, user[0].password, (err, result) => {
+            bcrypt.compare(req.body.password, user[0].password, (err, result) => {
 
             if (err) {
+                console.log(err);
+                
                 res.status(401).json({
                     message: 'Auth failed'
                 })
@@ -71,7 +73,7 @@ router.post('/login', (req, res, next) =>{
                 }, 
                 JWT_Key,
                 {
-                    expiresIn: '1h'
+                    expiresIn: '3h'
                 }
                 )
                 return res.status(200).json({

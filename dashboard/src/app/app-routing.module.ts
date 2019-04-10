@@ -10,8 +10,8 @@ const routes: Routes = [
     redirectTo: ''
   },
 
-  // { path: '', component: HomeComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  // { path: '', component: HomeComponent,  },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent }
 ];

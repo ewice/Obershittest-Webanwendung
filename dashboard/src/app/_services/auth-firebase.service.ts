@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 declare var gapi: any;
 
@@ -9,7 +10,14 @@ declare var gapi: any;
   providedIn: 'root'
 })
 export class AuthFirebaseService {
-
+  eventForm = new FormGroup({
+    summary: new FormControl('', [Validators.required]),
+    desc: new FormControl('', [Validators.required]),
+    start: new FormControl('', [Validators.required]),
+    startTime: new FormControl('', [Validators.required]),
+    end: new FormControl('', [Validators.required]),
+    endTime: new FormControl('', [Validators.required])
+  });
   user$: Observable<firebase.User>;
   calendarItems: any[];
 
@@ -37,7 +45,7 @@ export class AuthFirebaseService {
   }
 
   async login() {
-    const googleAuth = gapi.auth2.getAuthInstance()
+    const googleAuth = gapi.auth2.getAuthInstance();
     const googleUser = await googleAuth.signIn();
 
     const token = googleUser.getAuthResponse().id_token;
@@ -69,33 +77,40 @@ export class AuthFirebaseService {
       singleEvents: true,
       maxResults: 10,
       orderBy: 'startTime'
-    })
+    });
 
-    console.log(events)
+    console.log(events);
 
     this.calendarItems = events.result.items;
 
   }
 
-  async insertEvent() {
+  async insertEvent(summary: String, desc: String, start, end?) {
     const insert = await gapi.client.calendar.events.insert({
       calendarId: 'primary',
       start: {
-        dateTime: this.hoursFromNow(2),
-        timeZone: 'America/Los_Angeles'
+        dateTime: start,
+        timeZone: 'Europe/Berlin'
       },
       end: {
-        dateTime: this.hoursFromNow(3),
-        timeZone: 'America/Los_Angeles'
+        dateTime: end,
+        timeZone: 'Europe/Berlin'
       },
-      summary: 'Have Fun!!!',
-      description: 'Do some cool stuff and have a fun time doing it'
+      summary: summary,
+      description: desc
     })
-
     await this.getCalendar();
   }
 
   // ... helper function
 
    hoursFromNow = (n) => new Date(Date.now() + n * 1000 * 60 * 60 ).toISOString();
+
+   onSubmit() {
+    console.log(new Date(Date.now()).toISOString());
+
+   const start = this.eventForm.value.start + 'T' + this.eventForm.value.startTime + ':00.000' + 'Z';
+    const end = this.eventForm.value.end + 'T' + this.eventForm.value.endTime + ':00.000' + 'Z';
+     this.insertEvent(this.eventForm.value.summary, this.eventForm.value.desc, start, end);
+   }
 }

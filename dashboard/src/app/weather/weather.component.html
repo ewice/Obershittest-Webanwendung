@@ -1,26 +1,13 @@
 <section>
-<span id="temperatur">
-  {{wetter.temp}} &deg;C
-</span>
-<img src="{{ wetter.iconSrc }}" alt="" srcset="">
-<br>
 <h2>
-  Wetter in: {{wetter.location}}
+  Wetter
 </h2>
+<p id="temperatur">
+  {{_weather.wetter.temp}} &deg;C
+</p>
+<img src="{{ _weather.wetter.iconSrc }}" alt="" srcset="">
+<section id="wetter">
+  {{_weather.wetter.location}}
 </section>
 <section class="settings">
-  <form [formGroup]="weatherSettings" (ngSubmit)="onSubmit()">
-    <label>
-      PLZ:
-      <input type="text" formControlName="zip" id="plzInputField">
-    </label>
-    <br>
-    <label>
-      Standort automatisch setzen?
-      <input id="checkbox" type="checkbox" formControlName="automaticLocation">
-    </label>
-    <br>
-    <button class="btn-settings" type="submit" [disabled]="!weatherSettings.valid">Suchen</button>
-  </form>
 </section>
-
