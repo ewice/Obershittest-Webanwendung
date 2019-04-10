@@ -1,11 +1,12 @@
-<div class="col-sm-6 col-md-4">
+<div>
+    <h4>{{result.title}}</h4>
   <div class="thumbnail">
     <img src="{{result.thumbnailUrl}}">
     <!-- <video src="{{ result.videoUrl}}" ></video>-->
     <div class="caption">
-      <h4>{{result.title}}</h4>
+
       <p>{{result.description}}</p>
-      <p><a  (click)="onNavigate()" class="btn btn-default" role="button">
+      <p><a  (click)="onNavigate()" class="btn btn-youtube" role="button">
         Watch</a>
       </p>
       <div class="max-width-1024">
