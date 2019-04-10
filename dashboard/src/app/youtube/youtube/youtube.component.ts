@@ -22,7 +22,7 @@ export class YoutubeComponent implements OnInit {
     if (this.results.length === 0) {
       this.message = 'Not found...';
     } else {
-      this.message = 'Top 10 results:';
+      this.message = 'Top 10 Ergebnisse:';
     }
   }
 
