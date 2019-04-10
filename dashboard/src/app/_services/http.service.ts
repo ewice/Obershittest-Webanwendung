@@ -13,6 +13,8 @@ import { Rss2jsonService  } from '../_services/rss2json.service';
 })
 export class HttpService {
 
+  passwordInvalid = false;
+
   constructor(
     private _http: HttpClient,
     private rss2json: Rss2jsonService,
@@ -76,11 +78,16 @@ public putToDo(object: ToDo): Observable<ToDo> {
     this._http.post<any>(this.urlUsers + 'login', {email: name, password: password}, httpOptions ).subscribe( data => {
       localStorage.setItem('token', data.token);
       localStorage.setItem('userId', data.userId);
+      this.passwordInvalid = false;
       this._authservice.isAuthenticated();
       this.router.navigate(['']);
+
     },
     err => {
       console.log(err);
+      this.passwordInvalid = true;
+      console.log(this.passwordInvalid);
+
 
     }
     );
@@ -175,6 +182,6 @@ public putToDo(object: ToDo): Observable<ToDo> {
   }
 
   public getDashboardPositions(): Observable<Array<GridsterItem>> {
-   return this._http.get<Array<GridsterItem>>(this.urlDashboardPositions + localStorage.getItem('userId'), this.httpOptionsAuthorization);
+   return this._http.get<Array<GridsterItem>>(this.urlDashboardPositions + localStorage.getItem('userId'), this.httpOptions);
   }
 }

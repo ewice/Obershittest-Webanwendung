@@ -13,7 +13,7 @@ const userRoutes = require('./api/routes/user');
 const weatherRoutes = require('./api/routes/weather');
 const dashboardPositionRoutes = require('./api/routes/dashboardPosition');
 
-mongoose.connect("mongodb://localhost:27017/dashboard", {
+mongoose.connect("mongodb://localhost:27017/dhbw", {
     useCreateIndex: true,
     useNewUrlParser: true
 }).then(result => {
@@ -25,7 +25,7 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use(expressSanitizer());
+// app.use(expressSanitizer());
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
