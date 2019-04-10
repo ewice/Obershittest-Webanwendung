@@ -2,23 +2,29 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-
-import { User, ToDo } from '../_interface';
-import { AuthService } from '../_services/auth.service';
-import { Wettersettings } from '../_interface/wettersettings';
 import { GridsterItem } from 'angular-gridster2';
-import { DashboardPositions } from '../_interface/dashboard-positions';
 
+import { User, ToDo, Channel, Wettersettings, DashboardPositions } from '../_interface';
+import { AuthService } from '../_services/auth.service';
+import { Rss2jsonService  } from '../_services/rss2json.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
-  constructor(private _http: HttpClient, private _authservice: AuthService, private router: Router) { }
+  passwordInvalid = false;
+
+  constructor(
+    private _http: HttpClient,
+    private rss2json: Rss2jsonService,
+    private _authservice: AuthService,
+    private router: Router
+  ) { }
 
   urlTodos = 'http://localhost:3000/todos/';
   urlUsers = 'http://localhost:3000/users/';
+  urlChannels = 'http://localhost:3000/channels/';
   urlWeather = 'http://localhost:3000/weather/';
   urlDashboardPositions = 'http://localhost:3000/dashboardPositons/';
 
@@ -72,11 +78,16 @@ public putToDo(object: ToDo): Observable<ToDo> {
     this._http.post<any>(this.urlUsers + 'login', {email: name, password: password}, httpOptions ).subscribe( data => {
       localStorage.setItem('token', data.token);
       localStorage.setItem('userId', data.userId);
+      this.passwordInvalid = false;
       this._authservice.isAuthenticated();
       this.router.navigate(['']);
+
     },
     err => {
       console.log(err);
+      this.passwordInvalid = true;
+      console.log(this.passwordInvalid);
+
 
     }
     );
@@ -100,29 +111,77 @@ public putToDo(object: ToDo): Observable<ToDo> {
    return this._http.get<User>(this.urlUsers + uid, this.httpOptions);
   }
 
+// ##########################################################
+//                          RSS-Feed
+// ##########################################################
 
-  sendWeatherSettings(settings: Wettersettings) {
-    this._http.post<Wettersettings>(this.urlWeather, settings, this.httpOptionsAuthorization).subscribe();
-    console.log('done');
-
+  // GET
+  public getRssChannels(): Observable<Channel[]> {
+    const httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
+    };
+    return this._http.get<Channel[]>(this.urlChannels, httpOptions);
   }
 
-  getWeatherSettings() {
+  // GET
+  public getRssChannel(id: String): Observable<Channel> {
+    const httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
+    };
+    return this._http.get<Channel>(this.urlChannels + id, httpOptions);
+  }
+
+  // POST
+  public addRssChannel(object: Channel): Observable<Channel> {
+    const httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
+    };
+    return this._http.post<Channel>(this.urlChannels, object, httpOptions);
+  }
+
+  // XML in JSON umwandeln
+  public parseChannel(url: string) {
+    const encodedUrl = '?rss_url=' + encodeURI(url);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'api_key': this.rss2json.getApiKey(),
+        'count': this.rss2json.getCountMessages()
+      })
+    };
+    return this ._http.get(this.rss2json.getEndpoint() + encodedUrl, httpOptions);
+  }
+
+// ##########################################################
+//                          Wetter
+// ##########################################################
+
+  public sendWeatherSettings(settings: Wettersettings) {
+    this._http.post<Wettersettings>(this.urlWeather, settings, this.httpOptionsAuthorization).subscribe();
+    console.log('done');
+  }
+
+  public getWeatherSettings() {
     return this._http.get<Wettersettings>(this.urlWeather, this.httpOptions);
   }
 
-  sendDashboardPositions(dashboard: Array<GridsterItem>) {
-    let temporalDashboard: DashboardPositions = {
+  public sendDashboardPositions(dashboard: Array<GridsterItem>) {
+    const temporalDashboard: DashboardPositions = {
       dashboard: dashboard,
-      userId: localStorage.getItem("userId")
-    }
+      userId: localStorage.getItem('userId')
+    };
 
     this._http.post<DashboardPositions>(this.urlDashboardPositions, temporalDashboard, this.httpOptionsAuthorization).subscribe(data => {
 
     });
   }
 
-  getDashboardPositions(): Observable<Array<GridsterItem>>{
-   return this._http.get<Array<GridsterItem>>(this.urlDashboardPositions + localStorage.getItem("userId"), this.httpOptionsAuthorization);
+  public getDashboardPositions(): Observable<Array<GridsterItem>> {
+   return this._http.get<Array<GridsterItem>>(this.urlDashboardPositions + localStorage.getItem('userId'), this.httpOptions);
   }
 }

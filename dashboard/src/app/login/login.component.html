@@ -13,6 +13,9 @@
             <div class="alert" *ngIf="password.invalid && password.touched" >
                 Passwort ungültig
             </div>
+            <div class="alert" *ngIf=" _http.passwordInvalid" >
+                Email oder Passwort ungültig
+            </div>
         </div>
         <button type="submit" [disabled]="!signupForm.valid" routerLink="/" routerLinkActive="active" class="btn btn-blue">Login</button>
         <a routerLink="/register" routerLinkActive="active" class="btn btn-ghost">Registrieren</a>
