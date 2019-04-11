@@ -103,13 +103,13 @@ export class HomeComponent implements OnInit {
       scrollToNewItems: false
    };
 
-  //  this.dashboard = [
-  //   {cols: 2, rows: 1, y: 0, x: 0, hasContent: true, type: 'weather'},
-  //   {cols: 2, rows: 2, y: 0, x: 2, hasContent: true, type: 'todo'},
-  //   {cols: 1, rows: 2, y: 0, x: 4, hasContent: true, type: 'spotify'},
-  //   {cols: 1, rows: 1, y: 2, x: 5, hasContent: true, type: 'channel'},
-  //   {cols: 1, rows: 1, y: 2, x: 5, hasContent: true, type: 'calendar'}
-  // ];
+   this.dashboard = [
+    // {cols: 2, rows: 1, y: 0, x: 0, hasContent: true, type: 'weather'},
+    // {cols: 2, rows: 2, y: 0, x: 2, hasContent: true, type: 'todo'},
+    // {cols: 1, rows: 2, y: 0, x: 4, hasContent: true, type: 'spotify'},
+    // {cols: 1, rows: 1, y: 2, x: 5, hasContent: true, type: 'channel'},
+    // {cols: 1, rows: 1, y: 2, x: 5, hasContent: true, type: 'calendar'}
+  ];
     this._http.getDashboardPositions().subscribe(data => {
         console.log(data);
 

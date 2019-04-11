@@ -13,7 +13,7 @@ const userRoutes = require('./api/routes/user');
 const weatherRoutes = require('./api/routes/weather');
 const dashboardPositionRoutes = require('./api/routes/dashboardPosition');
 
-mongoose.connect("mongodb://localhost:27017/dhbw", {
+mongoose.connect("mongodb://localhost:27018/dhbw", {
     useCreateIndex: true,
     useNewUrlParser: true
 }).then(result => {
