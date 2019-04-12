@@ -90,7 +90,9 @@ export class HomeComponent implements OnInit {
       swap: true,
       draggable: {
         enabled: true,
-        stop: this.savePositions.bind(this)
+        stop: this.savePositions.bind(this),
+        ignoreContent: true,
+        dragHandleClass: 'drag-handler'
       },
       pushItems: true,
       disablePushOnDrag: false,
